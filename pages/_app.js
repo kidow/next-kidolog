@@ -2,6 +2,16 @@ import React from 'react'
 import App, { Container } from 'next/app'
 import '../lib/styles/index.scss'
 
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import withRedux from 'next-redux-wrapper'
+import reducer from '../store'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import penderMiddleware from 'redux-pender'
+
+const makeStore = () =>
+  createStore(reducer, composeWithDevTools(applyMiddleware(penderMiddleware())))
+
 class CustomApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}
@@ -13,13 +23,15 @@ class CustomApp extends App {
     return { pageProps }
   }
   render() {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, store } = this.props
     return (
       <Container>
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </Container>
     )
   }
 }
 
-export default CustomApp
+export default withRedux(makeStore)(CustomApp)
