@@ -1,0 +1,18 @@
+@import '~styles/color';
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid $oc-gray-4;
+  border-radius: 0.2rem;
+  &:hover {
+    background: $oc-gray-4;
+    color: $oc-gray-8;
+  }
+  .icon {
+    margin-right: 0.3rem;
+  }
+}
