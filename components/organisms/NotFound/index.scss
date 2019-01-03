@@ -1,0 +1,13 @@
+@import '~styles/color';
+
+.not-found {
+  height: calc(100vh - 6rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $oc-orange-5;
+  font-size: 1.8rem;
+  .icon {
+    margin-right: 0.5rem;
+  }
+}
