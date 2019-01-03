@@ -1,0 +1,17 @@
+@import '~styles/color';
+
+.tag__container {
+  margin: 0.375rem;
+  display: inline-flex;
+  border: 1px solid $oc-gray-4;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $oc-gray-7;
+  border-radius: 4px;
+  background: $oc-gray-3;
+  line-height: 0.75rem;
+  &:hover {
+    background: $oc-gray-4;
+  }
+}
