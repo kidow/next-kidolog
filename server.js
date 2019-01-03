@@ -14,6 +14,8 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
+  require('./models')()
+
   if (NODE_ENV === 'development') {
     server.use(morgan('dev'))
   }
