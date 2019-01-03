@@ -1,0 +1,10 @@
+@import '~styles/media';
+
+.post-template {
+  width: 768px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  @include media('<tablet') {
+    width: 100%;
+  }
+}
