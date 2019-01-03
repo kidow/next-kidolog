@@ -1,0 +1,11 @@
+@import '~styles/color';
+@import '~styles/media';
+@import '~styles/shadow';
+
+.button__container {
+  background: $oc-gray-8;
+  @include media('<desktop') {
+    background: $oc-grape-6;
+  }
+  @include shadow(3);
+}

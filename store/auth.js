@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions'
 import { Map } from 'immutable'
 import { pender } from 'redux-pender'
-import * as api from '../lib/api/auth'
+import * as api from 'api/auth'
 
 const CHANGE_PASSWORD = 'auth/CHANGE_PASSWORD'
 const LOGIN = 'auth/LOGIN'

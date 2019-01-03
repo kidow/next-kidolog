@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions'
 import { Map, fromJS } from 'immutable'
 import { pender } from 'redux-pender'
-import * as api from '../lib/api/post'
+import * as api from 'api/post'
 
 const GET_POST = 'post/GET_POST'
 const UPDATE_POST = 'post/UPDATE_POST'

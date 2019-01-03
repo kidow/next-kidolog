@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions'
 import { Map } from 'immutable'
-import * as api from '../lib/api/editor'
+import * as api from 'api/editor'
 import { pender } from 'redux-pender'
 
 const INTIALIZE_EDITOR = 'editor/INITIALIZE_EDITOR'

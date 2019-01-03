@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions'
 import { Map, fromJS, List } from 'immutable'
 import { pender } from 'redux-pender'
-import * as api from '../lib/api/list'
+import * as api from 'api/list'
 
 const GET_LIST = 'list/GET_LIST'
 const NEXT_LIST = 'list/NEXT_LIST'
