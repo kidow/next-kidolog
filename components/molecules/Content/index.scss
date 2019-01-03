@@ -1,0 +1,54 @@
+@import '~styles/color';
+@import '~styles/media';
+
+@mixin tablet {
+  @include media('<tablet') {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+.content__container {
+  margin-top: 5rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  @include media('<phone') {
+    margin-top: 2rem;
+    padding-top: 3rem;
+    border-top: 1px solid $oc-gray-3;
+    background: white;
+  }
+  .content__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 3rem;
+    word-break: keep-all;
+    @include tablet;
+  }
+  .content__buttons {
+    display: flex;
+  }
+  .content__date {
+    margin-top: 1rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid $oc-gray-3;
+    color: $oc-gray-5;
+    font-size: 1.1rem;
+    @include tablet;
+  }
+  .content__body {
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    @include media('<tablet') {
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+      font-size: 1rem;
+    }
+  }
+  .content__tags {
+    padding-bottom: 12rem;
+    @include tablet;
+  }
+}
