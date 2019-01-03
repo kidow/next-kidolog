@@ -1,0 +1,27 @@
+@import '~styles/color';
+@import '~styles/shadow';
+@import '~styles/media';
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  .header__content {
+    height: 4rem;
+    background: white;
+    padding: 1rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include media('<phone') {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  .header__divider {
+    height: 4px;
+    background: linear-gradient(to right, $oc-yellow-5, $oc-orange-6);
+    @include shadow(1);
+  }
+}
