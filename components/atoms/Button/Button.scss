@@ -1,11 +1,37 @@
 @import '~styles/color';
-@import '~styles/media';
 @import '~styles/shadow';
 
 .button__container {
-  background: $oc-gray-8;
-  @include media('<desktop') {
-    background: $oc-grape-6;
+  padding: 0.5rem 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  @include shadow(0);
+  border-radius: 0.2rem;
+  &.default {
+    border: 1px solid $oc-orange-6;
+    color: $oc-orange-6;
+    &:hover {
+      background: $oc-orange-6;
+      color: white;
+      @include shadow(3);
+    }
+    &:active {
+      background: $oc-orange-8;
+    }
   }
-  @include shadow(3);
+
+  &.upload {
+    border: 1px solid $oc-gray-4;
+    &:hover {
+      background: white;
+      color: $oc-gray-8;
+    }
+  }
+
+  & + & {
+    margin-left: 1rem;
+  }
 }
