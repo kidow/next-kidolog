@@ -8,6 +8,7 @@ class CustomDocument extends Document {
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"
+            charSet="utf-8"
           />
           <link
             rel="shortcut icon"

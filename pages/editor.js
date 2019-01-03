@@ -2,7 +2,6 @@ import { Button } from 'components/atoms'
 import Link from 'next/link'
 
 const Editor = ({ query }) => {
-  console.log(query)
   return (
     <div>
       <Link

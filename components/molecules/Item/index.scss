@@ -1,0 +1,68 @@
+@import '~styles/color';
+@import '~styles/shadow';
+@import '~styles/media';
+
+@keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.item__container {
+  width: 298px;
+  background: white;
+  @include shadow(0);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+  @include media('<desktop') {
+    width: 336px;
+  }
+  @include media('<tablet') {
+    width: 100%;
+  }
+  animation: appear 0.4s ease-in;
+  .item__image {
+    padding: 1rem;
+    padding-top: 1.2rem;
+    border-bottom: 1px solid $oc-gray-1;
+    background: $oc-gray-0;
+    color: $oc-gray-3;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8.5rem;
+    cursor: pointer;
+    background-position: center;
+    background-size: cover;
+    &:hover {
+      filter: opacity(0.8);
+    }
+  }
+  .item__title {
+    padding: 1rem;
+    height: 8.5rem;
+    .title__text {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .title__date {
+      margin-top: 0.5rem;
+      color: $oc-gray-5;
+      font-size: 0.9rem;
+    }
+  }
+  .item__description {
+    padding: 1rem;
+    padding-bottom: 1.2rem;
+    border-top: 1px solid $oc-gray-2;
+    height: 8.5rem;
+  }
+}
