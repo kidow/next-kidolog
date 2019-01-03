@@ -1,5 +1,4 @@
-import Document, { Main, NextScript } from 'next/document'
-import Head from 'next/head'
+import Document, { Head, Main, NextScript } from 'next/document'
 
 class CustomDocument extends Document {
   render() {

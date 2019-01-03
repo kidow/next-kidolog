@@ -9,8 +9,12 @@
     "start": "NODE_ENV=production node server"
   },
   "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
     "express": "^4.16.4",
+    "include-media": "^1.4.9",
     "next": "^7.0.2",
+    "node-sass": "^4.11.0",
+    "open-color": "^1.6.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
   },
