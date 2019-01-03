@@ -1,0 +1,11 @@
+@import '~styles/color';
+
+.footer {
+  border-top: 1px solid $oc-gray-3;
+  height: 6rem;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $oc-gray-5;
+}
