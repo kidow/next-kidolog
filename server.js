@@ -14,6 +14,7 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
+  require('./lib/moduleAlias')
   require('./models')()
 
   if (NODE_ENV === 'development') {
@@ -33,6 +34,16 @@ app.prepare().then(() => {
       }
     })
   )
+
+  server.use('/', require('./routes'))
+
+  server.use((err, req, res, next) => {
+    if (err) {
+      console.error(err)
+      res.status(err.status)
+    }
+    res.json({ success: false, code: err.code, message: err.message })
+  })
 
   server.get('*', (req, res) => {
     return handle(req, res)
