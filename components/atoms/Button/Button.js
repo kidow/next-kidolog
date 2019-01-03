@@ -1,21 +1,13 @@
 import styles from './Button.scss'
 import classNames from 'classnames/bind'
-import Link from 'next/link'
 
 const cx = classNames.bind(styles)
 
-const DivButton = ({ children, ...rest }) => <div {...rest}>{children}</div>
-
-const Button = ({ children, to, onClick, theme }) => {
-  const Element = to ? Link : DivButton
+const Button = ({ children, theme, ...rest }) => {
   return (
-    <Element
-      to={to}
-      onClick={onClick}
-      className={cx('button__container', theme)}
-    >
+    <div className={cx('button__container', theme)} {...rest}>
       {children}
-    </Element>
+    </div>
   )
 }
 
