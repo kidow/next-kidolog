@@ -17,7 +17,7 @@ const Item = ({ title, markdown, createdAt, id, thumbnail }) => {
       </div>
       <div className="item__title">
         <Link
-          as={{ pathname: `/post/${title}` }}
+          // as={{ pathname: `/post/${title}` }}
           href={{ pathname: `/post/${id}` }}
         >
           <a className="title__text">{title}</a>

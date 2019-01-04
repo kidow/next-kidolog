@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { Content } from 'components/molecules'
+import { Spinner } from 'components/atoms'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as postActions from 'store/post'
-import { Spinner } from 'components/atoms'
+import * as authActions from 'store/auth'
 
 class ContentContainer extends Component {
   componentDidMount() {
     this.initialize()
+    this.checkLogged()
   }
 
   initialize = async () => {
@@ -20,9 +22,9 @@ class ContentContainer extends Component {
     }
   }
 
-  onUpdate = () => {
-    const { history, id } = this.props
-    history.push(`/editor?id=${id}`)
+  checkLogged = async () => {
+    const { AuthActions } = this.props
+    AuthActions.check()
   }
 
   onRemove = async () => {
@@ -37,8 +39,8 @@ class ContentContainer extends Component {
 
   render() {
     const { loading, post, logged } = this.props
-    const { title, markdown, createdAt, tags } = post.toJS()
-    const { onUpdate, onRemove } = this
+    const { title, markdown, createdAt, tags, _id } = post.toJS()
+    const { onRemove } = this
     if (loading) return <Spinner />
     return (
       <Content
@@ -47,7 +49,7 @@ class ContentContainer extends Component {
         createdAt={createdAt}
         tags={tags}
         logged={logged}
-        onUpdate={onUpdate}
+        id={_id}
         onRemove={onRemove}
       />
     )
@@ -61,6 +63,7 @@ export default connect(
     loading: state.pender.pending['post/GET_POST']
   }),
   dispatch => ({
-    PostActions: bindActionCreators(postActions, dispatch)
+    PostActions: bindActionCreators(postActions, dispatch),
+    AuthActions: bindActionCreators(authActions, dispatch)
   })
 )(ContentContainer)

@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-const Button = ({ children, theme, ...rest }) => {
+const Button = ({ children, theme = 'default', ...rest }) => {
   return (
     <div className={cx('button__container', theme)} {...rest}>
       {children}

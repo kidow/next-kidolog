@@ -3,7 +3,9 @@ import { Button, Tag } from 'components/atoms'
 import moment from 'moment'
 import 'moment/locale/ko'
 import Marked from '../Marked'
-// import removeMd from 'remove-markdown'
+import { Link } from '../../../route'
+import Head from 'next/head'
+import removeMd from 'remove-markdown'
 
 const Content = ({
   title,
@@ -11,7 +13,7 @@ const Content = ({
   createdAt,
   tags,
   logged,
-  onUpdate,
+  id,
   onRemove
 }) => {
   const tagsList = Array.isArray(tags)
@@ -22,24 +24,27 @@ const Content = ({
       ))
     : []
   return (
-    <div className="content__title">
-      {/* {markdown && (
-        <Helmet>
+    <div className="content__container">
+      <div className="content__title">
+        <Head>
           <title>{title}</title>
           <meta name="description" content={removeMd(markdown).slice(0, 190)} />
-        </Helmet>
-      )} */}
-      {logged && (
-        <div className="content__buttons">
-          <Button onClick={onUpdate}>수정</Button>
-          <Button onClick={onRemove}>삭제</Button>
+        </Head>
+        <div className="content__title">{title}</div>
+        {logged && (
+          <div className="content__buttons">
+            <Link route="editor" params={{ id }}>
+              <Button>수정</Button>
+            </Link>
+            <Button onClick={onRemove}>삭제</Button>
+          </div>
+        )}
+        <div className="content__date">{moment(createdAt).format('lll')}</div>
+        <div className="content__body">
+          <Marked markdown={markdown} />
         </div>
-      )}
-      <div className="content__date">{moment(createdAt).format('lll')}</div>
-      <div className="content__body">
-        <Marked markdown={markdown} />
+        <div className="content__tags">{tagsList}</div>
       </div>
-      <div className="content__tags">{tagsList}</div>
     </div>
   )
 }

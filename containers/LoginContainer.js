@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Login } from 'components/organisms'
+import Router from 'next/router'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -13,11 +14,11 @@ class LoginContainer extends Component {
   }
 
   onLogin = async () => {
-    const { AuthActions, password, history } = this.props
+    const { AuthActions, password } = this.props
     try {
       await AuthActions.login(password)
       localStorage.logged = 'true'
-      history.push('/')
+      Router.push('/')
     } catch (e) {
       console.log(e)
     }

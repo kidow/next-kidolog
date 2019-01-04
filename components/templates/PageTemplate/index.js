@@ -1,10 +1,11 @@
 import './index.scss'
-import { Footer, Header } from 'components/organisms'
+import { Footer } from 'components/organisms'
+import { HeaderContainer } from 'containers'
 
 const PageTemplate = ({ children }) => {
   return (
     <div className="page-template">
-      <Header />
+      <HeaderContainer />
       {children}
       <Footer />
     </div>

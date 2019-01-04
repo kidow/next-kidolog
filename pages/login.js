@@ -1,1 +1,3 @@
-export default () => <div>Loign Page</div>
+import { LoginContainer } from 'containers'
+
+export default () => <LoginContainer />

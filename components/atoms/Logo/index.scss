@@ -5,7 +5,8 @@
   font-weight: bold;
   font-size: 1.4rem;
   padding-left: 1rem;
-  &.post {
+  cursor: pointer;
+  .post {
     font-size: 2rem;
   }
 }

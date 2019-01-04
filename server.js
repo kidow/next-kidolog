@@ -4,12 +4,13 @@ const next = require('next')
 const morgan = require('morgan')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
+const route = require('./route')
 const { PORT, NODE_ENV, COOKIE_KEY } = process.env
 
 const port = parseInt(PORT, 10) || 3000
 const dev = NODE_ENV !== 'production'
 const app = next({ dev })
-const handle = app.getRequestHandler()
+const handle = route.getRequestHandler(app)
 
 app.prepare().then(() => {
   const server = express()
@@ -49,7 +50,7 @@ app.prepare().then(() => {
     return handle(req, res)
   })
 
-  server.listen(port, err => {
+  server.use(handle).listen(port, err => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)
   })

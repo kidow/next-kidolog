@@ -1,6 +1,6 @@
 import './index.scss'
 import { Input, Button, Icon, IconButton } from 'components/atoms'
-import { MarkdownContainer, PreviewContainer } from 'containers'
+import { PreviewContainer } from 'containers'
 import { IoIosArrowDropleft, IoIosImage } from 'react-icons/io'
 import { MdFileUpload } from 'react-icons/md'
 import Router from 'next/router'

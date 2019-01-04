@@ -1,7 +1,7 @@
 import { Button } from 'components/atoms'
 import Link from 'next/link'
 
-const Editor = ({ query }) => {
+const Editor = () => {
   return (
     <div>
       <Link
@@ -13,10 +13,6 @@ const Editor = ({ query }) => {
       </Link>
     </div>
   )
-}
-
-Editor.getInitialProps = ({ query }) => {
-  return { query }
 }
 
 export default Editor

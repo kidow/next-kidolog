@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { List } from 'components/organisms'
+import { Spinner } from 'components/atoms'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as listActions from 'store/list'
-import { Spinner } from 'components/atoms'
 
 class ListContainer extends Component {
   prev = null
@@ -55,9 +55,9 @@ class ListContainer extends Component {
     }
   }
   render() {
-    const { posts, loading, history } = this.props
+    const { posts, loading } = this.props
     if (loading) return <Spinner />
-    return <List posts={posts.toJS()} history={history} />
+    return <List posts={posts.toJS()} />
   }
 }
 
