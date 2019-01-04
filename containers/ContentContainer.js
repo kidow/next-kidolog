@@ -9,11 +9,6 @@ import * as authActions from 'store/auth'
 import Router from 'next/router'
 
 class ContentContainer extends Component {
-  componentDidMount() {
-    this.initialize()
-    this.checkLogged()
-  }
-
   initialize = async () => {
     const { PostActions, id } = this.props
     try {
@@ -23,7 +18,7 @@ class ContentContainer extends Component {
     }
   }
 
-  checkLogged = async () => {
+  checkLogged = () => {
     const { AuthActions } = this.props
     AuthActions.check()
   }
@@ -36,6 +31,11 @@ class ContentContainer extends Component {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  async componentDidMount() {
+    await this.checkLogged()
+    this.initialize()
   }
 
   render() {

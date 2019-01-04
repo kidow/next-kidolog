@@ -19,9 +19,9 @@ const Content = ({
 }) => {
   const tagsList = Array.isArray(tags)
     ? tags.map(tag => (
-        <Tag key={tag} to={`/tag/${tag}`}>
-          {tag}
-        </Tag>
+        <Link route="tag" params={{ tag }}>
+          <Tag key={tag}>{tag}</Tag>
+        </Link>
       ))
     : []
   return (
@@ -39,7 +39,7 @@ const Content = ({
       )}
       {logged && (
         <div className="content__buttons">
-          <Link route="editor" params={{ id }}>
+          <Link route="editor" params={{ id: String(id) }}>
             <Button>수정</Button>
           </Link>
           <Button onClick={onRemove}>삭제</Button>

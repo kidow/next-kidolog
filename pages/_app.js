@@ -14,15 +14,24 @@ const makeStore = () =>
   createStore(reducer, composeWithDevTools(applyMiddleware(penderMiddleware())))
 
 class CustomApp extends App {
+  static async getInitialProps({ Component, router, ctx }) {
+    let pageProps = {}
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
+    return { pageProps }
+  }
   render() {
-    const { Component, store } = this.props
+    const { Component, pageProps, store } = this.props
     return (
       <Container>
         <Head>
           <title>Kidolog</title>
         </Head>
         <Provider store={store}>
-          <Component />
+          <Component {...pageProps} />
         </Provider>
       </Container>
     )
