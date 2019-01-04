@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import * as editorActions from 'store/editor'
 import * as postActions from 'store/post'
 
-import queryString from 'query-string'
+import Router from 'next/router'
 
 class EditorTemplateContainer extends Component {
   state = {
@@ -14,10 +14,9 @@ class EditorTemplateContainer extends Component {
   }
 
   componentDidMount() {
-    const { EditorActions, logged, history, location } = this.props
-    const { id } = queryString.parse(location.search)
+    const { EditorActions, logged, id } = this.props
     if (!logged) {
-      history.push('/')
+      Router.push('/')
       return
     }
     EditorActions.initializeEditor()
@@ -79,25 +78,24 @@ class EditorTemplateContainer extends Component {
       tags,
       thumbnail,
       EditorActions,
-      history,
-      location,
-      PostActions
+      PostActions,
+      id
     } = this.props
     const post = {
       title,
       markdown,
-      tags: tags === '' ? [] : [...new Set(tags.split(',').map(tag => tag.trim()))],
+      tags:
+        tags === '' ? [] : [...new Set(tags.split(',').map(tag => tag.trim()))],
       thumbnail
     }
     try {
-      const { id } = queryString.parse(location.search)
       if (id) {
         await PostActions.updatePost({ id, ...post })
-        history.push('/')
+        Router.push('/')
         return
       }
       await EditorActions.writePost(post)
-      history.push('/')
+      Router.push('/')
     } catch (e) {
       console.log(e)
     }
@@ -126,7 +124,7 @@ class EditorTemplateContainer extends Component {
   }
 
   render() {
-    const { history, title, location } = this.props
+    const { title, id } = this.props
     const { leftPercentage } = this.state
     const {
       onSeparatorMouseDown,
@@ -138,10 +136,8 @@ class EditorTemplateContainer extends Component {
     const markdownStyle = { flex: leftPercentage }
     const previewStyle = { flex: 1 - leftPercentage }
     const separatorStyle = { left: `${leftPercentage * 100}%` }
-    const { id } = queryString.parse(location.search)
     return (
       <EditorTemplate
-        history={history}
         title={title}
         onChange={onChangeInput}
         onSeparatorMouseDown={onSeparatorMouseDown}

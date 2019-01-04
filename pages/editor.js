@@ -1,18 +1,9 @@
-import { Button } from 'components/atoms'
-import Link from 'next/link'
+import { withRouter } from 'next/router'
+import { EditorTemplateContainer } from 'containers'
 
-const Editor = () => {
-  return (
-    <div>
-      <Link
-        replace
-        as="/post/groot"
-        href={{ pathname: '/post', query: { id: '1234' } }}
-      >
-        <Button theme="default">Button</Button>
-      </Link>
-    </div>
-  )
+const Editor = ({ router }) => {
+  const { id } = router.query
+  return <EditorTemplateContainer id={id} />
 }
 
-export default Editor
+export default withRouter(Editor)
