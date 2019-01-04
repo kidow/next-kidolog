@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import './index.scss'
 import { Input } from 'components/atoms'
 
-import CodeMirror from 'codemirror'
-
-import 'codemirror/mode/markdown/markdown'
-import 'codemirror/mode/javascript/javascript'
-import 'codemirror/mode/jsx/jsx'
-import 'codemirror/mode/css/css'
-import 'codemirror/mode/shell/shell'
-import 'codemirror/mode/sass/sass'
+let CodeMirror = null
+const isBrowser = process.env.APP_ENV === 'browser'
+if (isBrowser) {
+  CodeMirror = require('codemirror')
+  require('codemirror/mode/markdown/markdown')
+  require('codemirror/mode/javascript/javascript')
+  require('codemirror/mode/jsx/jsx')
+  require('codemirror/mode/css/css')
+  require('codemirror/mode/shell/shell')
+  require('codemirror/mode/sass/sass')
+}
 
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
@@ -56,6 +59,14 @@ class Markdown extends Component {
       name: 'markdown',
       value: doc.getValue()
     })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { codeMirror, cursor } = this
+    if (!codeMirror) return
+    codeMirror.setValue(this.props.markdown)
+    if (!cursor) return
+    codeMirror.setCursor(cursor)
   }
 
   render() {

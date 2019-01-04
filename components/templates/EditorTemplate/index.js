@@ -1,6 +1,6 @@
 import './index.scss'
 import { Input, Button, Icon, IconButton } from 'components/atoms'
-import { PreviewContainer } from 'containers'
+import { PreviewContainer, MarkdownContainer } from 'containers'
 import { IoIosArrowDropleft, IoIosImage } from 'react-icons/io'
 import { MdFileUpload } from 'react-icons/md'
 import Router from 'next/router'
@@ -56,7 +56,7 @@ const EditorTemplate = ({
       </div>
       <div className="editor__content">
         <div className="content__flex" style={markdownStyle}>
-          {/* <MarkdownContainer /> */}
+          <MarkdownContainer />
         </div>
         <div className="content__flex" style={previewStyle}>
           <PreviewContainer />
