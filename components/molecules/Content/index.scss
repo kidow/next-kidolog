@@ -25,6 +25,11 @@
     word-break: keep-all;
     @include tablet;
   }
+  .title__loading {
+    height: 100px;
+    background: $oc-gray-2;
+    border-radius: 8px;
+  }
   .content__buttons {
     display: flex;
   }
@@ -46,6 +51,11 @@
       padding-right: 0.8rem;
       font-size: 1rem;
     }
+  }
+  .body__loading {
+    height: 400px;
+    background: $oc-gray-2;
+    border-radius: 8px;
   }
   .content__tags {
     padding-bottom: 12rem;

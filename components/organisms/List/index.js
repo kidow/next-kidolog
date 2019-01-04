@@ -1,7 +1,7 @@
 import './index.scss'
 import { Item } from 'components/molecules'
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts, loading }) => {
   const postList = posts.map(item => (
     <Item
       key={item._id}
@@ -10,6 +10,7 @@ const PostList = ({ posts }) => {
       createdAt={item.createdAt}
       thumbnail={item.thumbnail}
       id={item._id}
+      loading={loading}
     />
   ))
   return <div className="post-list">{postList}</div>

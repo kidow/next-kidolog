@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { List } from 'components/organisms'
-import { Spinner } from 'components/atoms'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -56,8 +55,7 @@ class ListContainer extends Component {
   }
   render() {
     const { posts, loading } = this.props
-    if (loading) return <Spinner />
-    return <List posts={posts.toJS()} />
+    return <List posts={posts.toJS()} loading={loading} />
   }
 }
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Content } from 'components/molecules'
-import { Spinner } from 'components/atoms'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -43,7 +42,6 @@ class ContentContainer extends Component {
     const { loading, post, logged } = this.props
     const { title, markdown, createdAt, tags, _id } = post.toJS()
     const { onRemove } = this
-    if (loading) return <Spinner />
     return (
       <Content
         title={title}
@@ -53,6 +51,7 @@ class ContentContainer extends Component {
         logged={logged}
         id={_id}
         onRemove={onRemove}
+        loading={loading}
       />
     )
   }

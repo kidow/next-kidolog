@@ -4,7 +4,8 @@ import 'moment/locale/ko'
 import removeMd from 'remove-markdown'
 import Link from 'next/link'
 
-const Item = ({ title, markdown, createdAt, id, thumbnail }) => {
+const Item = ({ title, markdown, createdAt, id, thumbnail, loading }) => {
+  if (loading) return <div className="item__loading" />
   return (
     <div className="item__container">
       <Link href={`/post/${id}`}>

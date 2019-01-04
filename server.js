@@ -43,7 +43,7 @@ app.prepare().then(() => {
       console.error(err)
       res.status(err.status)
     }
-    res.json({ success: false, code: err.code, message: err.message })
+    res.json({ success: false, message: err.message })
   })
 
   server.get('*', (req, res) => {
