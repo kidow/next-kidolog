@@ -39,7 +39,7 @@ class ContentContainer extends Component {
   }
 
   render() {
-    const { loading, post, logged } = this.props
+    const { success, post, logged } = this.props
     const { title, markdown, createdAt, tags, _id } = post.toJS()
     const { onRemove } = this
     return (
@@ -51,7 +51,7 @@ class ContentContainer extends Component {
         logged={logged}
         id={_id}
         onRemove={onRemove}
-        loading={loading}
+        success={success}
       />
     )
   }
@@ -61,7 +61,7 @@ export default connect(
   state => ({
     post: state.post.get('post'),
     logged: state.auth.get('logged'),
-    loading: state.pender.pending['post/GET_POST']
+    success: state.pender.success['post/GET_POST']
   }),
   dispatch => ({
     PostActions: bindActionCreators(postActions, dispatch),
