@@ -14,24 +14,27 @@ class EditorTemplateContainer extends Component {
     leftPercentage: 0.5
   }
 
+  async componentDidMount() {
+    await this.checkLogged()
+    this.initialize()
+  }
+
   initialize = () => {
-    const { EditorActions, logged, id } = this.props
-    if (!logged) {
-      Router.push('/')
-      return
-    }
+    const { EditorActions, id } = this.props
     EditorActions.initializeEditor()
     if (id) {
       EditorActions.getPost(id)
     }
   }
 
-  checkLogged = async () => {
+  checkLogged = () => {
     const { AuthActions } = this.props
     AuthActions.check()
   }
 
   onUploadClick = () => {
+    const { logged } = this.props
+    if (!logged) return
     const formData = new FormData()
     const upload = document.createElement('input')
     upload.type = 'file'
@@ -46,6 +49,8 @@ class EditorTemplateContainer extends Component {
   }
 
   onUploadThumbClick = () => {
+    const { logged } = this.props
+    if (!logged) return
     const formData = new FormData()
     const upload = document.createElement('input')
     upload.type = 'file'
@@ -85,7 +90,8 @@ class EditorTemplateContainer extends Component {
       thumbnail,
       EditorActions,
       PostActions,
-      id
+      id,
+      logged
     } = this.props
     const post = {
       title,
@@ -95,13 +101,17 @@ class EditorTemplateContainer extends Component {
       thumbnail
     }
     try {
-      if (id) {
-        await PostActions.updatePost({ id, ...post })
-        Router.push('/')
+      if (!logged) {
         return
+      } else {
+        if (id) {
+          await PostActions.updatePost({ id, ...post })
+          Router.push('/')
+          return
+        }
+        await EditorActions.writePost(post)
+        Router.push('/')
       }
-      await EditorActions.writePost(post)
-      Router.push('/')
     } catch (e) {
       console.log(e)
     }
@@ -127,11 +137,6 @@ class EditorTemplateContainer extends Component {
     const { EditorActions } = this.props
     const { name, value } = e.target
     EditorActions.changeInput({ name, value })
-  }
-
-  async componentDidMount() {
-    await this.checkLogged()
-    this.initialize()
   }
 
   render() {

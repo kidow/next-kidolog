@@ -10,7 +10,7 @@ class HeaderContainer extends Component {
     this.checkLogged()
   }
 
-  checkLogged = async () => {
+  checkLogged = () => {
     const { AuthActions } = this.props
     AuthActions.check()
   }

@@ -26,7 +26,10 @@ export default handleActions(
       type: GET_LIST,
       onSuccess: (state, action) => {
         const { next, posts } = action.payload.data
-        return state.set('next', next).set('posts', fromJS(posts))
+        return state
+          .set('next', next)
+          .set('posts', fromJS(posts))
+          .set('search', '')
       }
     }),
     ...pender({
