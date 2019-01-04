@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as editorActions from 'store/editor'
 import * as postActions from 'store/post'
+import * as authActions from 'store/auth'
 
 import Router from 'next/router'
 
@@ -13,7 +14,7 @@ class EditorTemplateContainer extends Component {
     leftPercentage: 0.5
   }
 
-  componentDidMount() {
+  initialize = () => {
     const { EditorActions, logged, id } = this.props
     if (!logged) {
       Router.push('/')
@@ -23,6 +24,11 @@ class EditorTemplateContainer extends Component {
     if (id) {
       EditorActions.getPost(id)
     }
+  }
+
+  checkLogged = async () => {
+    const { AuthActions } = this.props
+    AuthActions.check()
   }
 
   onUploadClick = () => {
@@ -123,6 +129,11 @@ class EditorTemplateContainer extends Component {
     EditorActions.changeInput({ name, value })
   }
 
+  async componentDidMount() {
+    await this.checkLogged()
+    this.initialize()
+  }
+
   render() {
     const { title, id } = this.props
     const { leftPercentage } = this.state
@@ -163,6 +174,7 @@ export default connect(
   }),
   dispatch => ({
     EditorActions: bindActionCreators(editorActions, dispatch),
-    PostActions: bindActionCreators(postActions, dispatch)
+    PostActions: bindActionCreators(postActions, dispatch),
+    AuthActions: bindActionCreators(authActions, dispatch)
   })
 )(EditorTemplateContainer)
