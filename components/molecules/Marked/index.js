@@ -2,16 +2,20 @@ import React, { Component } from 'react'
 import marked from 'marked'
 import './index.scss'
 
-import Prism from 'prismjs'
+let Prism = null
+if (process.env.APP_ENV === 'browser') {
+  Prism = require('prismjs')
+  require('prismjs/components/prism-bash.min.js')
+  require('prismjs/components/prism-javascript.min.js')
+  require('prismjs/components/prism-typescript.min.js')
+  require('prismjs/components/prism-json.min.js')
+  require('prismjs/components/prism-jsx.min.js')
+  require('prismjs/components/prism-css.min.js')
+  require('prismjs/components/prism-markdown.min.js')
+  require('prismjs/components/prism-scss.min.js')
+}
+
 import 'prismjs/themes/prism-tomorrow.css'
-import 'prismjs/components/prism-bash.min.js'
-import 'prismjs/components/prism-javascript.min.js'
-import 'prismjs/components/prism-typescript.min.js'
-import 'prismjs/components/prism-json.min.js'
-import 'prismjs/components/prism-jsx.min.js'
-import 'prismjs/components/prism-css.min.js'
-import 'prismjs/components/prism-markdown.min.js'
-import 'prismjs/components/prism-scss.min.js'
 
 class Marked extends Component {
   state = {
