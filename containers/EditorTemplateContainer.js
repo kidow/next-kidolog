@@ -34,7 +34,10 @@ class EditorTemplateContainer extends Component {
 
   onUploadClick = () => {
     const { logged } = this.props
-    if (!logged) return
+    if (!logged) {
+      alert('로그인이 필요합니다')
+      return
+    }
     const formData = new FormData()
     const upload = document.createElement('input')
     upload.type = 'file'
@@ -50,7 +53,10 @@ class EditorTemplateContainer extends Component {
 
   onUploadThumbClick = () => {
     const { logged } = this.props
-    if (!logged) return
+    if (!logged) {
+      alert('로그인이 필요합니다')
+      return
+    }
     const formData = new FormData()
     const upload = document.createElement('input')
     upload.type = 'file'
@@ -102,6 +108,7 @@ class EditorTemplateContainer extends Component {
     }
     try {
       if (!logged) {
+        alert('로그인이 필요합니다')
         return
       } else {
         if (id) {

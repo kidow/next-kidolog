@@ -3,7 +3,7 @@ import './index.scss'
 import { Input } from 'components/atoms'
 
 let CodeMirror = null
-const isBrowser = process.env.APP_ENV === 'browser'
+const isBrowser = process.env.NODE_ENV === 'production'
 if (isBrowser) {
   CodeMirror = require('codemirror')
   require('codemirror/mode/markdown/markdown')
