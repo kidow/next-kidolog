@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
   try {
     const post = await Post.findById(id).exec()
     if (!post) {
-      return next(new CustomError('404 Not Found', 0, 404))
+      return next(new CustomError('404 Not Found', 404))
     }
     res.json(post)
   } catch (err) {

@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
   const { password } = req.body
 
   if (Joi.validate(password, Joi.string().required()).error) {
-    return next(new CustomError('Joi Error', 0, 400))
+    return next(new CustomError('Joi Error', 400))
   }
 
   if (password === process.env.PASSWORD) {
