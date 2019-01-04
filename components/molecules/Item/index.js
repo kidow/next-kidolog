@@ -2,19 +2,19 @@ import './index.scss'
 import moment from 'moment'
 import 'moment/locale/ko'
 import removeMd from 'remove-markdown'
-import { Router } from 'route'
 import Link from 'next/link'
 
 const Item = ({ title, markdown, createdAt, id, thumbnail }) => {
   return (
     <div className="item__container">
-      <div
-        className="item__image"
-        style={{ backgroundImage: `url(${thumbnail})` }}
-        onClick={() => Router.pushRoute('post', { id })}
-      >
-        {thumbnail ? '' : '이미지가 없습니다'}
-      </div>
+      <Link href={`/post/${id}`}>
+        <div
+          className="item__image"
+          style={{ backgroundImage: `url(${thumbnail})` }}
+        >
+          {thumbnail ? '' : '이미지가 없습니다'}
+        </div>
+      </Link>
       <div className="item__title">
         <Link
           // as={{ pathname: `/post/${title}` }}

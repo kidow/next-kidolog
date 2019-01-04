@@ -3,7 +3,7 @@ import { Button, Tag } from 'components/atoms'
 import moment from 'moment'
 import 'moment/locale/ko'
 import Marked from '../Marked'
-import { Link } from '../../../route'
+import { Link } from 'lib/next-routes'
 import Head from 'next/head'
 import removeMd from 'remove-markdown'
 

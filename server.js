@@ -4,7 +4,7 @@ const next = require('next')
 const morgan = require('morgan')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
-const route = require('./route')
+const route = require('./lib/next-routes')
 const { PORT, NODE_ENV, COOKIE_KEY } = process.env
 
 const port = parseInt(PORT, 10) || 3000

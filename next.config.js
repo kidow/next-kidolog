@@ -10,7 +10,7 @@ module.exports = withSass(
       config.resolve.alias['containers'] = path.join(__dirname, 'containers')
       config.resolve.alias['store'] = path.join(__dirname, 'store')
       config.resolve.alias['api'] = path.join(__dirname, 'lib/api')
-      config.resolve.alias['route'] = path.join(__dirname, 'route.js')
+      config.resolve.alias['lib'] = path.join(__dirname, 'lib')
       config.resolve.alias['hoc'] = path.join(__dirname, 'lib/hoc')
       return config
     }

@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import * as postActions from 'store/post'
 import * as authActions from 'store/auth'
 
+import Router from 'next/router'
+
 class ContentContainer extends Component {
   componentDidMount() {
     this.initialize()
@@ -28,10 +30,10 @@ class ContentContainer extends Component {
   }
 
   onRemove = async () => {
-    const { PostActions, id, history } = this.props
+    const { PostActions, id } = this.props
     try {
       await PostActions.removePost(id)
-      history.push('/')
+      Router.push('/')
     } catch (e) {
       console.log(e)
     }
