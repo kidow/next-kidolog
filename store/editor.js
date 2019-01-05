@@ -3,14 +3,14 @@ import { Map } from 'immutable'
 import * as api from 'api/editor'
 import { pender } from 'redux-pender'
 
-const INTIALIZE_EDITOR = 'editor/INITIALIZE_EDITOR'
+const INITIALIZE_EDITOR = 'editor/INITIALIZE_EDITOR'
 const CHANGE_INPUT = 'editor/CHANGE_INPUT'
 const WRITE_POST = 'editor/WRITE_POST'
 const GET_POST = 'editor/GET_POST'
 const IMAGE_UPLOAD = 'editor/IMAGE_UPLOAD'
 const THUMBNAIL_UPLOAD = 'editor/THUMBNAIL_UPLOAD'
 
-export const initializeEditor = createAction(INTIALIZE_EDITOR)
+export const initializeEditor = createAction(INITIALIZE_EDITOR)
 export const changeInput = createAction(CHANGE_INPUT)
 export const writePost = createAction(WRITE_POST, api.writePost)
 export const getPost = createAction(GET_POST, api.getPost)
@@ -29,7 +29,7 @@ const initialState = Map({
 
 export default handleActions(
   {
-    [INTIALIZE_EDITOR]: (state, action) => initialState,
+    [INITIALIZE_EDITOR]: (state, action) => initialState,
     [CHANGE_INPUT]: (state, action) => {
       const { name, value } = action.payload
       return state.set(name, value)
