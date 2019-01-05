@@ -50,3 +50,4 @@ https://www.kidolog.com
 - dotenv
 - module-alias
 - morgan
+- Nginx (Web Server)

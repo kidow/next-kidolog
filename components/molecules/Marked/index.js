@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import marked from 'marked'
 import './index.scss'
 
-let Prism = null
-if (process.env.APP_ENV === 'browser') {
+let Prism
+if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
   Prism = require('prismjs')
   require('prismjs/components/prism-bash.min.js')
   require('prismjs/components/prism-javascript.min.js')

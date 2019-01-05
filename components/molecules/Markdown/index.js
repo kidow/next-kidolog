@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './index.scss'
 import { Input } from 'components/atoms'
 
-let CodeMirror = null
-if (process.env.APP_ENV === 'browser') {
+let CodeMirror
+if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
   CodeMirror = require('codemirror')
   require('codemirror/mode/markdown/markdown')
   require('codemirror/mode/javascript/javascript')
