@@ -21,7 +21,7 @@ class EditorTemplateContainer extends Component {
 
   initialize = () => {
     const { EditorActions, id } = this.props
-    EditorActions.initializeEditor()
+    EditorActions.initialize()
     if (id) {
       EditorActions.getPost(id)
     }

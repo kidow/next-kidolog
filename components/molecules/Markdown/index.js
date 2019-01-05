@@ -21,10 +21,6 @@ class Markdown extends Component {
   cursor = null
   codeMirror = null
 
-  componentDidMount() {
-    this.initializeEditor()
-  }
-
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.markdown !== this.props.markdown) {
       const { codeMirror, cursor } = this
@@ -35,7 +31,7 @@ class Markdown extends Component {
     }
   }
 
-  initializeEditor = () => {
+  initialize = () => {
     this.codeMirror = CodeMirror(this.editor, {
       mode: 'markdown',
       theme: 'monokai',
@@ -66,6 +62,10 @@ class Markdown extends Component {
     codeMirror.setValue(this.props.markdown)
     if (!cursor) return
     codeMirror.setCursor(cursor)
+  }
+
+  componentDidMount() {
+    this.initialize()
   }
 
   render() {
