@@ -9,14 +9,15 @@ const helmet = require('helmet')
 const hpp = require('hpp')
 const RedisStore = require('connect-redis')(session)
 const {
+  PORT,
   NODE_ENV,
   COOKIE_KEY: secret,
   REDIS_HOST: host,
-  REDIS_PORT: port,
+  REDIS_PORT,
   REDIS_PASSWORD: pass
 } = process.env
 
-const port = parseInt(process.env.PORT, 10) || 3000
+const port = parseInt(PORT, 10) || 3000
 const dev = NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = route.getRequestHandler(app)
@@ -47,7 +48,7 @@ app.prepare().then(() => {
       },
       store: new RedisStore({
         host,
-        port,
+        port: REDIS_PORT,
         pass,
         logErrors: true
       })
