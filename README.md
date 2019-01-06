@@ -2,7 +2,7 @@
 
 https://www.kidolog.com
 
-> Kidow's Blog, Next.js is AWESOME
+> Kidow's Blog, Next.js is AWESOME!
 
 ## Project Stack (-> 차후 변경할 것들)
 
@@ -51,3 +51,4 @@ https://www.kidolog.com
 - module-alias
 - morgan
 - Nginx (Web Server)
+- Redis

@@ -5,7 +5,17 @@ const morgan = require('morgan')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const route = require('./lib/next-routes')
-const { PORT, NODE_ENV, COOKIE_KEY } = process.env
+const helmet = require('helmet')
+const hpp = require('hpp')
+const RedisStore = require('connect-redis')(session)
+const {
+  PORT,
+  NODE_ENV,
+  COOKIE_KEY,
+  REDIS_HOST: host,
+  REDIS_PORT,
+  REDIS_PASSWORD: pass
+} = process.env
 
 const port = parseInt(PORT, 10) || 3000
 const dev = NODE_ENV !== 'production'
@@ -20,6 +30,9 @@ app.prepare().then(() => {
 
   if (NODE_ENV === 'development') {
     server.use(morgan('dev'))
+  } else {
+    server.use(helmet())
+    server.use(hpp())
   }
   server.use(express.json())
   server.use(express.urlencoded({ extended: false }))
@@ -31,8 +44,14 @@ app.prepare().then(() => {
       secret: COOKIE_KEY,
       cookie: {
         maxAge: 8640000,
-        secure: false
-      }
+        secure: NODE_ENV === 'production'
+      },
+      store: new RedisStore({
+        host,
+        port: REDIS_PORT,
+        pass,
+        logErrors: true
+      })
     })
   )
 
