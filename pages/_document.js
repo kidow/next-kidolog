@@ -7,8 +7,9 @@ export default class extends Document {
         <Head>
           <meta
             name="viewport"
-            content="initial-scale=1.0, width=device-width"
+            content="initial-scale=1.0, width=device-width IE=Edge"
             charSet="utf-8"
+            httpEquiv="X-UA-Compatible"
           />
           <link
             rel="shortcut icon"
