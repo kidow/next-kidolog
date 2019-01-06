@@ -1,9 +1,12 @@
-import './index.scss'
+import styles from './index.scss'
+import classNames from 'classnames/bind'
 import { Input, Button, Icon, IconButton } from 'components/atoms'
 import { PreviewContainer, MarkdownContainer } from 'containers'
 import { IoIosArrowDropleft, IoIosImage } from 'react-icons/io'
 import { MdFileUpload } from 'react-icons/md'
 import Router from 'next/router'
+
+const cx = classNames.bind(styles)
 
 const EditorTemplate = ({
   markdownStyle,
@@ -55,10 +58,10 @@ const EditorTemplate = ({
         </div>
       </div>
       <div className="editor__content">
-        <div className="content__flex" style={markdownStyle}>
+        <div style={markdownStyle} className={cx('content__flex', 'display')}>
           <MarkdownContainer />
         </div>
-        <div className="content__flex" style={previewStyle}>
+        <div style={previewStyle} className={cx('content__flex', 'none')}>
           <PreviewContainer />
         </div>
         <div

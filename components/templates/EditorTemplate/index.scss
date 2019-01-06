@@ -1,4 +1,5 @@
 @import '~styles/color';
+@import '~styles/media';
 
 .editor-template {
   .editor__header {
@@ -36,6 +37,16 @@
       display: flex;
       min-width: 0;
       overflow: auto;
+      &.display {
+        @include media('<phone') {
+          flex: 1 !important;
+        }
+      }
+      &.none {
+        @include media('<phone') {
+          display: none !important;
+        }
+      }
     }
     .content__separator {
       width: 1rem;
