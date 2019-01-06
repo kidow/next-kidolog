@@ -28,7 +28,7 @@ const Content = ({
     <div className="content__container">
       {markdown && (
         <Head>
-          <title>{title}</title>
+          <title>{title} | Kidow</title>
           <meta name="description" content={removeMd(markdown).slice(0, 190)} />
         </Head>
       )}

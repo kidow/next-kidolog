@@ -25,6 +25,7 @@
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 1.5rem;
+  border-radius: 4px;
   @include media('<desktop') {
     width: 336px;
   }
@@ -45,8 +46,11 @@
     cursor: pointer;
     background-position: center;
     background-size: cover;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     &:hover {
       filter: opacity(0.8);
+      transition: 0.2s;
     }
   }
   .item__title {

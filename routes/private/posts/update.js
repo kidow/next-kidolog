@@ -6,6 +6,7 @@ module.exports = async (req, res, next) => {
   const schema = Joi.object().keys({
     title: Joi.string().required(),
     markdown: Joi.string().required(),
+    thumbnail: Joi.string().empty(''),
     tags: Joi.array()
       .items(Joi.string())
       .required()
