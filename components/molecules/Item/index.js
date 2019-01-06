@@ -19,16 +19,15 @@ const Item = ({ title, markdown, createdAt, id, thumbnail, success }) => {
           </div>
         </Link>
         <div className="item__title">
-          <Link
-            // as={{ pathname: `/post/${title}` }}
-            href={{ pathname: `/post/${id}` }}
-          >
+          <Link href={{ pathname: `/post/${id}` }}>
             <a className="title__text">{title}</a>
           </Link>
           <div className="title__date">{moment(createdAt).fromNow()}</div>
         </div>
         <div className="item__description">
-          {removeMd(markdown.slice(0, 190))}...
+          {removeMd(markdown).length > 120
+            ? `${removeMd(markdown).slice(0, 120)}...`
+            : removeMd(markdown)}
         </div>
       </div>
     )

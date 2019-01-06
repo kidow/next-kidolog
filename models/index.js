@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const { NODE_ENV, MONGO_URI } = process.env
 
 module.exports = () => {
-  if (NODE_ENV !== 'production') {
+  if (NODE_ENV === 'development') {
     mongoose.set('debug', true)
   }
 

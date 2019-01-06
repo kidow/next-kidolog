@@ -113,11 +113,11 @@ class EditorTemplateContainer extends Component {
       } else {
         if (id) {
           await PostActions.updatePost({ id, ...post })
-          Router.push('/')
+          Router.push(`/post/${id}`)
           return
         }
         await EditorActions.writePost(post)
-        Router.push('/')
+        Router.push(`/post/${this.props.postId}`)
       }
     } catch (e) {
       console.log(e)
@@ -182,7 +182,8 @@ export default connect(
     markdown: state.editor.get('markdown'),
     tags: state.editor.get('tags'),
     thumbnail: state.editor.get('thumbnail'),
-    logged: state.auth.get('logged')
+    logged: state.auth.get('logged'),
+    postId: state.editor.get('postId')
   }),
   dispatch => ({
     EditorActions: bindActionCreators(editorActions, dispatch),

@@ -1,12 +1,19 @@
 @import '~styles/color';
+@import '~styles/media';
 
 .marked {
   blockquote {
     border-left: 4px solid $oc-orange-6;
-    padding: 1rem;
+    padding-left: 1rem;
     background: $oc-gray-1;
+    @include media('<phone') {
+      background: none;
+    }
     margin-left: 0;
     margin-right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
     p {
       margin: 0;
     }
