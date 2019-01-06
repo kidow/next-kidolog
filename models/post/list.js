@@ -3,7 +3,7 @@ module.exports = function({ cursor, tag, search }) {
     {},
     cursor ? { _id: { $lt: cursor } } : {},
     tag ? { tags: tag } : {},
-    search ? { title: new RegExp(search) } : {}
+    search ? { title: new RegExp(search, 'ig') } : {}
   )
 
   return this.find(query)
