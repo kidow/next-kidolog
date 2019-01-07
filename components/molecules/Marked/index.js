@@ -5,6 +5,8 @@ import './index.scss'
 let Prism
 if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
   Prism = require('prismjs')
+  require('prismjs/components/prism-json.min.js')
+  require('prismjs/components/prism-nginx.min.js')
   require('prismjs/components/prism-bash.min.js')
   require('prismjs/components/prism-javascript.min.js')
   require('prismjs/components/prism-typescript.min.js')
