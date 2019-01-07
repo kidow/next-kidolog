@@ -4,8 +4,8 @@ import 'moment/locale/ko'
 import removeMd from 'remove-markdown'
 import Link from 'next/link'
 
-const Item = ({ title, markdown, createdAt, id, thumbnail, success }) => {
-  if (!success) {
+const Item = ({ title, markdown, createdAt, id, thumbnail, pending }) => {
+  if (pending) {
     return <div className="item__loading" />
   } else {
     return (

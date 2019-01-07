@@ -2,7 +2,7 @@ module.exports = function({ cursor, tag, search }) {
   const query = Object.assign(
     {},
     cursor ? { _id: { $lt: cursor } } : {},
-    tag ? { tags: tag } : {},
+    tag ? { tags: new RegExp(tag, 'ig') } : {},
     search ? { title: new RegExp(search, 'ig') } : {}
   )
 

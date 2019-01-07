@@ -1,7 +1,7 @@
 import './index.scss'
 import { Item } from 'components/molecules'
 
-const PostList = ({ posts, success }) => {
+const List = ({ posts, pending }) => {
   const postList = posts.map(item => (
     <Item
       key={item._id}
@@ -10,10 +10,10 @@ const PostList = ({ posts, success }) => {
       createdAt={item.createdAt}
       thumbnail={item.thumbnail}
       id={item._id}
-      success={success}
+      pending={pending}
     />
   ))
   return <div className="post-list">{postList}</div>
 }
 
-export default PostList
+export default List
