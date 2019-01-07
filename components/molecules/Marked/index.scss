@@ -18,6 +18,10 @@
       margin: 0;
     }
   }
+  p {
+    word-break: keep-all;
+  }
+
   h1,
   h2,
   h3,

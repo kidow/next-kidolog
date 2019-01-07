@@ -9,38 +9,28 @@ import * as authActions from 'store/auth'
 import Router from 'next/router'
 
 class ContentContainer extends Component {
-  initialize = async () => {
-    const { PostActions, id } = this.props
-    try {
-      await PostActions.getPost(id)
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
   checkLogged = () => {
     const { AuthActions } = this.props
     AuthActions.check()
   }
 
   onRemove = async () => {
-    const { PostActions, id } = this.props
+    const { PostActions, post } = this.props
     try {
-      await PostActions.removePost(id)
+      await PostActions.removePost(post._id)
       Router.push('/')
     } catch (e) {
       console.log(e)
     }
   }
 
-  async componentDidMount() {
-    await this.checkLogged()
-    this.initialize()
+  componentDidMount() {
+    this.checkLogged()
   }
 
   render() {
-    const { success, post, logged } = this.props
-    const { title, markdown, createdAt, tags, _id } = post.toJS()
+    const { post, logged } = this.props
+    const { title, markdown, createdAt, tags, _id } = post
     const { onRemove } = this
     return (
       <Content
@@ -51,7 +41,6 @@ class ContentContainer extends Component {
         logged={logged}
         id={_id}
         onRemove={onRemove}
-        success={success}
       />
     )
   }
@@ -59,9 +48,7 @@ class ContentContainer extends Component {
 
 export default connect(
   state => ({
-    post: state.post.get('post'),
-    logged: state.auth.get('logged'),
-    success: state.pender.success['post/GET_POST']
+    logged: state.auth.get('logged')
   }),
   dispatch => ({
     PostActions: bindActionCreators(postActions, dispatch),

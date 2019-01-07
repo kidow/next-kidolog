@@ -14,13 +14,12 @@ const Content = ({
   tags,
   logged,
   id,
-  onRemove,
-  success
+  onRemove
 }) => {
   const tagsList = Array.isArray(tags)
-    ? tags.map(tag => (
-        <Link route="tag" params={{ tag }}>
-          <Tag key={tag}>{tag}</Tag>
+    ? tags.map((tag, index) => (
+        <Link key={index} route="tag" params={{ tag }}>
+          <Tag key={index}>{tag}</Tag>
         </Link>
       ))
     : []
@@ -32,11 +31,7 @@ const Content = ({
           <meta name="description" content={removeMd(markdown).slice(0, 190)} />
         </Head>
       )}
-      {success ? (
-        <div className="content__title">{title}</div>
-      ) : (
-        <div className="title__loading" />
-      )}
+      <div className="content__title">{title}</div>
       {logged && (
         <div className="content__buttons">
           <Link route="editor" params={{ id: String(id) }}>
@@ -46,13 +41,9 @@ const Content = ({
         </div>
       )}
       <div className="content__date">{moment(createdAt).format('lll')}</div>
-      {success ? (
-        <div className="content__body">
-          <Marked markdown={markdown} />
-        </div>
-      ) : (
-        <div className="body__loading" />
-      )}
+      <div className="content__body">
+        <Marked markdown={markdown} />
+      </div>
       <div className="content__tags">{tagsList}</div>
     </div>
   )
