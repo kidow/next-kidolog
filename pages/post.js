@@ -12,11 +12,11 @@ class Post extends React.Component {
   }
 
   render() {
-    const { router } = this.props
+    const { post } = this.props
     return (
       <PostTemplate>
         <Logo theme="post" />
-        <ContentContainer id={router.query.id} />
+        <ContentContainer post={post} />
       </PostTemplate>
     )
   }

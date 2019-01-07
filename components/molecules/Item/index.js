@@ -20,7 +20,9 @@ const Item = ({ title, markdown, createdAt, id, thumbnail, pending }) => {
         </Link>
         <div className="item__title">
           <Link href={{ pathname: `/post/${id}` }}>
-            <a className="title__text">{title}</a>
+            <a className="title__text">
+              {title.length > 17 ? `${title.slice(0, 17)}...` : title}
+            </a>
           </Link>
           <div className="title__date">{moment(createdAt).fromNow()}</div>
         </div>
