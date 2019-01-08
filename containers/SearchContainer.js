@@ -12,15 +12,19 @@ class SearchContainer extends Component {
     ListActions.changeSearch(value)
   }
 
-  onSearch = () => {
+  onSearch = async () => {
     const { ListActions, search } = this.props
     try {
       if (search) {
         if (search[0] === '#') {
-          ListActions.getList({ tag: search.slice(1) })
+          await ListActions.getList({ tag: search.slice(1) })
+          const { next } = this.props
+          if (next) ListActions.nextList(next)
           return
         }
-        ListActions.getList({ search })
+        await ListActions.getList({ search })
+        const { next } = this.props
+        if (next) ListActions.nextList(next)
       }
     } catch (e) {
       console.log(e)
@@ -48,7 +52,8 @@ class SearchContainer extends Component {
 
 export default connect(
   state => ({
-    search: state.list.get('search')
+    search: state.list.get('search'),
+    next: state.list.get('next')
   }),
   dispatch => ({
     ListActions: bindActionCreators(listActions, dispatch)
