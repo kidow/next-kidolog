@@ -1,6 +1,7 @@
 import './index.scss'
 import { Button, Logo } from 'components/atoms'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 const Header = ({ logged }) => {
   return (
@@ -16,6 +17,10 @@ const Header = ({ logged }) => {
       <div className="header__divider" />
     </div>
   )
+}
+
+Header.propTypes = {
+  logged: PropTypes.bool
 }
 
 export default Header

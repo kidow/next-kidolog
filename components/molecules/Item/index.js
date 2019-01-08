@@ -3,6 +3,7 @@ import moment from 'moment'
 import 'moment/locale/ko'
 import removeMd from 'remove-markdown'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 const Item = ({ title, markdown, createdAt, id, thumbnail, pending }) => {
   if (pending) {
@@ -34,6 +35,15 @@ const Item = ({ title, markdown, createdAt, id, thumbnail, pending }) => {
       </div>
     )
   }
+}
+
+Item.propTypes = {
+  title: PropTypes.string,
+  markdown: PropTypes.string,
+  createdAt: PropTypes.string,
+  id: PropTypes.string,
+  thumbnail: PropTypes.string,
+  pending: PropTypes.bool
 }
 
 export default Item

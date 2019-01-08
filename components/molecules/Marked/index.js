@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import marked from 'marked'
 import './index.scss'
+import PropTypes from 'prop-types'
 
 let Prism
 if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
@@ -64,6 +65,10 @@ class Marked extends Component {
     const { html } = this.state
     return <div className="marked" dangerouslySetInnerHTML={{ __html: html }} />
   }
+}
+
+Marked.propTypes = {
+  markdown: PropTypes.string
 }
 
 export default Marked

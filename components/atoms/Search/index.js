@@ -1,5 +1,6 @@
 import './index.scss'
 import Input from '../Input'
+import PropTypes from 'prop-types'
 
 const Search = ({ search, onChangeSearch, onKeyPress }) => {
   return (
@@ -13,6 +14,12 @@ const Search = ({ search, onChangeSearch, onKeyPress }) => {
       />
     </div>
   )
+}
+
+Search.propTypes = {
+  search: PropTypes.string,
+  onChangeSearch: PropTypes.func,
+  onKeyPress: PropTypes.func
 }
 
 export default Search

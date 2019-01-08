@@ -1,5 +1,6 @@
 import './index.scss'
 import { Input } from 'components/atoms'
+import PropTypes from 'prop-types'
 
 const Login = ({ password, onChangePassword, onKeyPress }) => {
   return (
@@ -20,6 +21,12 @@ const Login = ({ password, onChangePassword, onKeyPress }) => {
       </div>
     </div>
   )
+}
+
+Login.propTypes = {
+  password: PropTypes.string,
+  onChangePassword: PropTypes.func,
+  onKeyPress: PropTypes.func
 }
 
 export default Login

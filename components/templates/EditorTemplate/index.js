@@ -5,6 +5,7 @@ import { PreviewContainer, MarkdownContainer } from 'containers'
 import { IoIosArrowDropleft, IoIosImage } from 'react-icons/io'
 import { MdFileUpload } from 'react-icons/md'
 import Router from 'next/router'
+import PropTypes from 'prop-types'
 
 const cx = classNames.bind(styles)
 
@@ -72,6 +73,19 @@ const EditorTemplate = ({
       </div>
     </div>
   )
+}
+
+EditorTemplate.propTypes = {
+  markdownStyle: PropTypes.object,
+  previewStyle: PropTypes.object,
+  separatorStyle: PropTypes.object,
+  onSeparatorMouseDown: PropTypes.func,
+  title: PropTypes.string,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+  onUploadClick: PropTypes.func,
+  updateMode: PropTypes.bool,
+  onUploadThumbClick: PropTypes.func
 }
 
 export default EditorTemplate

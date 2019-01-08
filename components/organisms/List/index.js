@@ -1,5 +1,6 @@
 import './index.scss'
 import { Item } from 'components/molecules'
+import PropTypes from 'prop-types'
 
 const List = ({ posts, pending }) => {
   const postList = posts.map(item => (
@@ -14,6 +15,11 @@ const List = ({ posts, pending }) => {
     />
   ))
   return <div className="post-list">{postList}</div>
+}
+
+List.propTypes = {
+  posts: PropTypes.array,
+  pending: PropTypes.bool
 }
 
 export default List

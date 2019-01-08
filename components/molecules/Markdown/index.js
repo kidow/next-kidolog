@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './index.scss'
 import { Input } from 'components/atoms'
+import PropTypes from 'prop-types'
 
 let CodeMirror
 if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
@@ -90,6 +91,12 @@ class Markdown extends Component {
       </div>
     )
   }
+}
+
+Markdown.propTypes = {
+  tags: PropTypes.string,
+  onChangeInput: PropTypes.func,
+  markdown: PropTypes.string
 }
 
 export default Markdown

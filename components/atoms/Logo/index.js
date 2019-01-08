@@ -1,5 +1,6 @@
 import './index.scss'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 const Logo = ({ theme }) => {
   return (
@@ -9,6 +10,10 @@ const Logo = ({ theme }) => {
       </Link>
     </div>
   )
+}
+
+Logo.propTypes = {
+  theme: PropTypes.string
 }
 
 export default Logo

@@ -6,6 +6,7 @@ import Marked from '../Marked'
 import { Link } from 'lib/next-routes'
 import Head from 'next/head'
 import removeMd from 'remove-markdown'
+import PropTypes from 'prop-types'
 
 const Content = ({
   title,
@@ -47,6 +48,16 @@ const Content = ({
       <div className="content__tags">{tagsList}</div>
     </div>
   )
+}
+
+Content.propTypes = {
+  title: PropTypes.string,
+  markdown: PropTypes.string,
+  createdAt: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  logged: PropTypes.bool,
+  id: PropTypes.string,
+  onRemove: PropTypes.func
 }
 
 export default Content

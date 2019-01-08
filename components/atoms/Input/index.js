@@ -1,4 +1,5 @@
 import './index.scss'
+import PropTypes from 'prop-types'
 
 const Input = ({ theme, ...rest }) => {
   return (
@@ -9,6 +10,10 @@ const Input = ({ theme, ...rest }) => {
       {...rest}
     />
   )
+}
+
+Input.propTypes = {
+  theme: PropTypes.string
 }
 
 export default Input
