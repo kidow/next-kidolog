@@ -36,7 +36,7 @@ class CustomApp extends App {
     return (
       <Container>
         <Head>
-          <title>Kidolog</title>
+          <title>Kidow Blog</title>
         </Head>
         <Provider store={store}>
           <Component {...pageProps} />
