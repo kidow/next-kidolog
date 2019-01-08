@@ -54,8 +54,10 @@ class ListContainer extends Component {
     }
   }
   render() {
-    const { posts, pending } = this.props
-    return <List posts={posts.toJS()} pending={pending} />
+    const { posts, pending, nextPending } = this.props
+    return (
+      <List posts={posts.toJS()} pending={pending} nextPending={nextPending} />
+    )
   }
 }
 
@@ -64,7 +66,8 @@ export default connect(
     posts: state.list.get('posts'),
     next: state.list.get('next'),
     nextPosts: state.list.get('nextPosts'),
-    pending: state.pender.pending['list/GET_LIST']
+    pending: state.pender.pending['list/GET_LIST'],
+    nextPending: state.pender.pending['list/SHOW_NEXT_LIST']
   }),
   dispatch => ({
     ListActions: bindActionCreators(listActions, dispatch)

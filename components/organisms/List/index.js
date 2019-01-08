@@ -2,7 +2,7 @@ import './index.scss'
 import { Item } from 'components/molecules'
 import PropTypes from 'prop-types'
 
-const List = ({ posts, pending }) => {
+const List = ({ posts, pending, nextPending }) => {
   const postList = posts.map(item => (
     <Item
       key={item._id}
