@@ -5,9 +5,9 @@
   blockquote {
     border-left: 4px solid $oc-orange-6;
     padding-left: 1rem;
-    background: $oc-gray-1;
+    background: white;
     @include media('<phone') {
-      background: none;
+      background: $oc-gray-1;
     }
     margin-left: 0;
     margin-right: 0;
