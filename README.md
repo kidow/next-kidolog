@@ -4,6 +4,8 @@ https://www.kidolog.com
 
 > Kidow's Blog, Next.js is AWESOME!
 
+![title](/static/readme.png)
+
 ## Project Stack (-> 차후 변경할 것들)
 
 ### Front-end :
