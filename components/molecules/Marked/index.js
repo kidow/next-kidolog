@@ -16,6 +16,7 @@ if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
   require('prismjs/components/prism-css.min.js')
   require('prismjs/components/prism-markdown.min.js')
   require('prismjs/components/prism-scss.min.js')
+  require('prismjs/components/prism-sql.min.js')
 }
 
 import 'prismjs/themes/prism-tomorrow.css'

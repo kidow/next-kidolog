@@ -13,6 +13,7 @@ if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
   require('codemirror/mode/shell/shell')
   require('codemirror/mode/sass/sass')
   require('codemirror/mode/nginx/nginx')
+  require('codemirror/mode/sql/sql')
 }
 
 import 'codemirror/lib/codemirror.css'
