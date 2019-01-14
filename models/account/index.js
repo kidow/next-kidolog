@@ -2,9 +2,7 @@ const mongoose = require('mongoose')
 
 const Account = new mongoose.Schema(
   {
-    email: String,
     nickname: String,
-    password: String,
     social: {
       Facebook: {
         id: String,

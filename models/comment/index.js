@@ -1,8 +1,14 @@
 const mongoose = require('mongoose')
+const {
+  Types: { ObjectId }
+} = mongoose.Schema
 
 const Comment = new mongoose.Schema(
   {
-    nickname: String,
+    nickname: {
+      type: ObjectId,
+      ref: 'Account'
+    },
     text: String
   },
   { timestamps: true }
