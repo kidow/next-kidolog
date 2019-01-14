@@ -1,9 +1,6 @@
 const router = require('express').Router()
 
-const private = require('./private')
-const public = require('./public')
-
-router.use('/prv', private)
-router.use('/', public)
+router.use('/prv', require('./private'))
+router.use('/', require('./public'))
 
 module.exports = router
