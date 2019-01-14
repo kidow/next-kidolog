@@ -20,4 +20,5 @@ module.exports = () => {
 
   require('./post')
   require('./account')
+  require('./comment')
 }
