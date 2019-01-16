@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const CustomError = require('@error')
 
-module.exports = async (req, res, next) => {
+module.exports = (req, res, next) => {
   const { password } = req.body
 
   if (Joi.validate(password, Joi.string().required()).error) {

@@ -1,5 +1,5 @@
 const router = require('express').Router()
 
-router.use(require('./post'))
+router.post('/login', require('./login'))
 
 module.exports = router

@@ -1,5 +1,5 @@
-const auth = require('express').Router()
+const router = require('express').Router()
 
-auth.get('/check', require('./check'))
+router.use(require('./get'))
 
-module.exports = auth
+module.exports = router
