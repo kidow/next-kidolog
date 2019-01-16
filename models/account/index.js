@@ -6,15 +6,15 @@ const Account = new mongoose.Schema({
     unique: true
   },
   social: {
-    Facebook: {
+    facebook: {
       id: String,
       accessToken: String
     },
-    Google: {
+    google: {
       id: String,
       accessToken: String
     },
-    Github: {
+    github: {
       id: String,
       accessToken: String
     }
