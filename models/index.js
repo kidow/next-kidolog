@@ -13,7 +13,7 @@ module.exports = () => {
       if (err) {
         console.error('mongoDB connecting error :', err)
       } else {
-        console.error('mongoDB connected')
+        console.log('mongoDB connected')
       }
     }
   )
