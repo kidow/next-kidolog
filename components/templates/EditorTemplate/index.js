@@ -2,8 +2,10 @@ import styles from './index.scss'
 import classNames from 'classnames/bind'
 import { Input, Button, Icon, IconButton } from 'components/atoms'
 import { PreviewContainer, MarkdownContainer } from 'containers'
+
 import { IoIosArrowDropleft, IoIosImage } from 'react-icons/io'
 import { MdFileUpload } from 'react-icons/md'
+
 import Router from 'next/router'
 import PropTypes from 'prop-types'
 

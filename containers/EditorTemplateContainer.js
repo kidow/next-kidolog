@@ -34,10 +34,7 @@ class EditorTemplateContainer extends Component {
 
   onUploadClick = () => {
     const { logged } = this.props
-    if (!logged) {
-      alert('로그인이 필요합니다')
-      return
-    }
+    if (!logged) return alert('로그인이 필요합니다')
     const formData = new FormData()
     const upload = document.createElement('input')
     upload.type = 'file'
@@ -53,10 +50,7 @@ class EditorTemplateContainer extends Component {
 
   onUploadThumbClick = () => {
     const { logged } = this.props
-    if (!logged) {
-      alert('로그인이 필요합니다')
-      return
-    }
+    if (!logged) return alert('로그인이 필요합니다')
     const formData = new FormData()
     const upload = document.createElement('input')
     upload.type = 'file'
@@ -72,20 +66,12 @@ class EditorTemplateContainer extends Component {
 
   uploadImage = formData => {
     const { EditorActions } = this.props
-    try {
-      EditorActions.imageUpload(formData)
-    } catch (e) {
-      console.log(e)
-    }
+    EditorActions.imageUpload(formData)
   }
 
   uploadThumbnail = formData => {
     const { EditorActions } = this.props
-    try {
-      EditorActions.thumbnailUpload(formData)
-    } catch (e) {
-      console.log(e)
-    }
+    EditorActions.thumbnailUpload(formData)
   }
 
   onSubmit = async () => {
@@ -107,18 +93,13 @@ class EditorTemplateContainer extends Component {
       thumbnail
     }
     try {
-      if (!logged) {
-        alert('로그인이 필요합니다')
-        return
-      } else {
-        if (id) {
-          await PostActions.updatePost({ id, ...post })
-          Router.push(`/post/${id}`)
-          return
-        }
-        await EditorActions.writePost(post)
-        Router.push(`/post/${this.props.postId}`)
+      if (!logged) return alert('로그인이 필요합니다')
+      if (id) {
+        await PostActions.updatePost({ id, ...post })
+        return Router.push(`/post/${id}`)
       }
+      await EditorActions.writePost(post)
+      Router.push(`/post/${this.props.postId}`)
     } catch (e) {
       console.log(e)
     }

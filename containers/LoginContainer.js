@@ -25,9 +25,7 @@ class LoginContainer extends Component {
   }
 
   onKeyPress = e => {
-    if (e.key === 'Enter') {
-      this.onLogin()
-    }
+    if (e.key === 'Enter') this.onLogin()
   }
 
   render() {

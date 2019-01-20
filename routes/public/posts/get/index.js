@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { checkObjectId, checkCursor } = require('@middle')
 
-router.get('/', checkCursor, require('./list'))
-router.get('/:id', checkObjectId, require('./get'))
+router.get('/', checkCursor, require('./_'))
+router.get('/:id', checkObjectId, require('./_id'))
 
 module.exports = router

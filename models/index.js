@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { NODE_ENV, MONGO_URI } = process.env
+const { NODE_ENV, MONGO_URI, MONGO_DB_NAME } = process.env
 
 module.exports = () => {
   if (NODE_ENV === 'development') {
@@ -8,7 +8,7 @@ module.exports = () => {
 
   mongoose.connect(
     MONGO_URI,
-    { dbName: 'kidolog', useNewUrlParser: true, useCreateIndex: true },
+    { dbName: MONGO_DB_NAME, useNewUrlParser: true, useCreateIndex: true },
     err => {
       if (err) {
         console.error('mongoDB connecting error :', err)

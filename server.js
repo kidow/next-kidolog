@@ -65,9 +65,7 @@ app.prepare().then(() => {
     res.json({ success: false, message: err.message })
   })
 
-  server.get('*', (req, res) => {
-    return handle(req, res)
-  })
+  server.get('*', (req, res) => handle(req, res))
 
   server.use(handle).listen(port, err => {
     if (err) throw err

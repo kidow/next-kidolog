@@ -32,9 +32,7 @@ class SearchContainer extends Component {
   }
 
   onKeyPress = e => {
-    if (e.key === 'Enter') {
-      this.onSearch()
-    }
+    if (e.key === 'Enter') this.onSearch()
   }
 
   render() {

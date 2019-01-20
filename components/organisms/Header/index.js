@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const Header = ({ logged }) => {
   return (
-    <div className="header">
+    <div className="header__container">
       <div className="header__content">
         <Logo />
         {logged && (

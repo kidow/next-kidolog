@@ -1,11 +1,14 @@
 import './index.scss'
 import { Button, Tag } from 'components/atoms'
-import moment from 'moment'
-import 'moment/locale/ko'
-import Marked from '../Marked'
+import { Marked } from 'components/molecules'
+
 import { Link } from 'lib/next-routes'
 import Head from 'next/head'
+
+import moment from 'moment'
+import 'moment/locale/ko'
 import removeMd from 'remove-markdown'
+
 import PropTypes from 'prop-types'
 
 const Content = ({
