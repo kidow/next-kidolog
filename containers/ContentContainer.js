@@ -47,8 +47,8 @@ class ContentContainer extends Component {
 }
 
 export default connect(
-  state => ({
-    logged: state.auth.get('logged')
+  ({ auth }) => ({
+    logged: auth.logged
   }),
   dispatch => ({
     PostActions: bindActionCreators(postActions, dispatch),

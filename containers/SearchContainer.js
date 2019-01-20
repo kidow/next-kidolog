@@ -51,9 +51,9 @@ class SearchContainer extends Component {
 }
 
 export default connect(
-  state => ({
-    search: state.list.get('search'),
-    next: state.list.get('next')
+  ({ list }) => ({
+    search: list.search,
+    next: list.next
   }),
   dispatch => ({
     ListActions: bindActionCreators(listActions, dispatch)

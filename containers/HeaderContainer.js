@@ -21,8 +21,8 @@ class HeaderContainer extends Component {
 }
 
 export default connect(
-  state => ({
-    logged: state.auth.get('logged')
+  ({ auth }) => ({
+    logged: auth.logged
   }),
   dispatch => ({
     AuthActions: bindActionCreators(authActions, dispatch)

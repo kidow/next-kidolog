@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions'
-import { Map, fromJS, List } from 'immutable'
-import { pender } from 'redux-pender'
+import produce from 'immer'
+import { applyPenders } from 'redux-pender'
 import * as api from 'api/list'
 
 const GET_LIST = 'list/GET_LIST'
@@ -13,42 +13,48 @@ export const nextList = createAction(NEXT_LIST, api.nextList)
 export const showNextList = createAction(SHOW_NEXT_LIST)
 export const changeSearch = createAction(CHANGE_SEARCH)
 
-const initialState = Map({
+const initialState = {
   next: '',
-  posts: List(),
-  nextPosts: List(),
+  posts: [],
+  nextPosts: [],
   search: ''
-})
+}
 
-export default handleActions(
+const reducer = handleActions(
   {
-    ...pender({
-      type: GET_LIST,
-      onSuccess: (state, action) => {
-        const { next, posts } = action.payload.data
-        return state
-          .set('next', next)
-          .set('posts', fromJS(posts))
-          .set('search', '')
-      }
-    }),
-    ...pender({
-      type: NEXT_LIST,
-      onSuccess: (state, action) => {
-        const { next, posts } = action.payload.data
-        return state.set('next', next).set('nextPosts', fromJS(posts))
-      }
-    }),
-    [SHOW_NEXT_LIST]: (state, action) => {
-      const nextPosts = state.get('nextPosts')
-      return state
-        .update('posts', post => post.concat(nextPosts))
-        .set('nextPosts', List())
-    },
-    [CHANGE_SEARCH]: (state, action) => {
-      const { payload: value } = action
-      return state.set('search', value)
-    }
+    [SHOW_NEXT_LIST]: (state, action) =>
+      produce(state, draft => {
+        const nextPosts = draft.nextPosts
+        draft.posts = draft.posts.concat(nextPosts)
+        draft.nextPosts = []
+      }),
+    [CHANGE_SEARCH]: (state, action) =>
+      produce(state, draft => {
+        const { payload: value } = action
+        draft.search = value
+      })
   },
   initialState
 )
+
+export default applyPenders(reducer, [
+  {
+    type: GET_LIST,
+    onSuccess: (state, action) =>
+      produce(state, draft => {
+        const { next, posts } = action.payload.data
+        draft.next = next
+        draft.posts = posts
+        draft.search = ''
+      })
+  },
+  {
+    type: NEXT_LIST,
+    onSuccess: (state, action) =>
+      produce(state, draft => {
+        const { next, posts } = action.payload.data
+        draft.next = next
+        draft.nextPosts = posts
+      })
+  }
+])

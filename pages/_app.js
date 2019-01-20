@@ -22,7 +22,7 @@ const makeStore = () => {
 }
 
 class CustomApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
 
     if (Component.getInitialProps) {

@@ -177,13 +177,13 @@ class EditorTemplateContainer extends Component {
 }
 
 export default connect(
-  state => ({
-    title: state.editor.get('title'),
-    markdown: state.editor.get('markdown'),
-    tags: state.editor.get('tags'),
-    thumbnail: state.editor.get('thumbnail'),
-    logged: state.auth.get('logged'),
-    postId: state.editor.get('postId')
+  ({ auth, editor }) => ({
+    title: editor.title,
+    markdown: editor.markdown,
+    tags: editor.tags,
+    thumbnail: editor.thumbnail,
+    logged: auth.logged,
+    postId: editor.postId
   }),
   dispatch => ({
     EditorActions: bindActionCreators(editorActions, dispatch),

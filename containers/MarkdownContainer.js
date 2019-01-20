@@ -14,14 +14,16 @@ class MarkdownContainer extends Component {
   render() {
     const { tags, markdown } = this.props
     const { onChangeInput } = this
-    return <Markdown markdown={markdown} tags={tags} onChangeInput={onChangeInput} />
+    return (
+      <Markdown markdown={markdown} tags={tags} onChangeInput={onChangeInput} />
+    )
   }
 }
 
 export default connect(
-  state => ({
-    markdown: state.editor.get('markdown'),
-    tags: state.editor.get('tags')
+  ({ editor }) => ({
+    markdown: editor.markdown,
+    tags: editor.tags
   }),
   dispatch => ({
     EditorActions: bindActionCreators(editorActions, dispatch)

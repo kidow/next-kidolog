@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions'
-import { Map } from 'immutable'
+import produce from 'immer'
 import * as api from 'api/editor'
-import { pender } from 'redux-pender'
+import { applyPenders } from 'redux-pender'
 
 const INITIALIZE = 'editor/INITIALIZE'
 const CHANGE_INPUT = 'editor/CHANGE_INPUT'
@@ -20,52 +20,59 @@ export const thumbnailUpload = createAction(
   api.thumbnailUpload
 )
 
-const initialState = Map({
+const initialState = {
   title: '',
   markdown: '',
   tags: '',
   thumbnail: '',
   postId: null
-})
+}
 
-export default handleActions(
+const reducer = handleActions(
   {
     [INITIALIZE]: (state, action) => initialState,
-    [CHANGE_INPUT]: (state, action) => {
-      const { name, value } = action.payload
-      return state.set(name, value)
-    },
-    ...pender({
-      type: WRITE_POST,
-      onSuccess: (state, action) => {
-        const { _id } = action.payload.data
-        return state.set('postId', _id)
-      }
-    }),
-    ...pender({
-      type: GET_POST,
-      onSuccess: (state, action) => {
-        const { title, markdown, tags } = action.payload.data
-        return state
-          .set('title', title)
-          .set('markdown', markdown)
-          .set('tags', tags.join(', '))
-      }
-    }),
-    ...pender({
-      type: IMAGE_UPLOAD,
-      onSuccess: (state, action) => {
-        const { image } = action.payload.data
-        return state.set('markdown', state.get('markdown') + image)
-      }
-    }),
-    ...pender({
-      type: THUMBNAIL_UPLOAD,
-      onSuccess: (state, action) => {
-        const { thumbnail } = action.payload.data
-        return state.set('thumbnail', thumbnail)
-      }
-    })
+    [CHANGE_INPUT]: (state, action) =>
+      produce(state, draft => {
+        const { name, value } = action.payload
+        draft[name] = value
+      })
   },
   initialState
 )
+
+export default applyPenders(reducer, [
+  {
+    type: WRITE_POST,
+    onSuccess: (state, action) =>
+      produce(state, draft => {
+        const { _id } = action.payload.data
+        draft.postId = _id
+      })
+  },
+  {
+    type: GET_POST,
+    onSuccess: (state, action) =>
+      produce(state, draft => {
+        const { title, markdown, tags } = action.payload.data
+        draft.title = title
+        draft.markdown = markdown
+        draft.tags = tags.join(', ')
+      })
+  },
+  {
+    type: IMAGE_UPLOAD,
+    onSuccess: (state, action) =>
+      produce(state, draft => {
+        const { image } = action.payload.data
+        draft.markdown = draft.markdown + image
+      })
+  },
+  {
+    type: THUMBNAIL_UPLOAD,
+    onSuccess: (state, action) =>
+      produce(state, draft => {
+        const { thumbnail } = action.payload.data
+        draft.thumbnail = thumbnail
+      })
+  }
+])

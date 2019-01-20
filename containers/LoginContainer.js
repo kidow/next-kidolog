@@ -44,8 +44,8 @@ class LoginContainer extends Component {
 }
 
 export default connect(
-  state => ({
-    password: state.auth.get('password')
+  ({ auth }) => ({
+    password: auth.password
   }),
   dispatch => ({
     AuthActions: bindActionCreators(authActions, dispatch)

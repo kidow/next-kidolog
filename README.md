@@ -20,15 +20,15 @@ https://www.kidolog.com
   - include-media
   - classnames
   - node-sass
-- Redux
-  - immutable (-> immer.js)
+- State Management
+  - immer
   - react-redux
   - redux-actions
   - redux
   - redux-pender (-> redux-saga)
   - redux-devtools-extension
   - next-redux-wrapper
-- Editor 관련
+- Code Editor
   - codemirror
   - prismjs
   - marked
