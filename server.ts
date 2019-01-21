@@ -57,13 +57,7 @@ app.prepare().then(() => {
 
   server.use('/', require('./routes'))
 
-  server.use((err, _req, res, _next) => {
-    if (err) {
-      console.error(err)
-      res.status(err.status)
-    }
-    res.json({ success: false, message: err.message })
-  })
+  server.use(require('@middle/error'))
 
   server.get('*', (req, res) => handle(req, res))
 
