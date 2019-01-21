@@ -2,20 +2,11 @@ require('dotenv').config()
 const express = require('express')
 const next = require('next')
 const morgan = require('morgan')
-const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const route = require('./lib/next-routes')
 const helmet = require('helmet')
 const hpp = require('hpp')
-const RedisStore = require('connect-redis')(session)
-const {
-  PORT,
-  NODE_ENV,
-  COOKIE_KEY: secret,
-  REDIS_HOST: host,
-  REDIS_PORT,
-  REDIS_PASSWORD: pass
-} = process.env
+const { PORT, NODE_ENV, COOKIE_KEY } = process.env
 
 const port = parseInt(PORT, 10) || 3000
 const dev = NODE_ENV !== 'production'
@@ -36,27 +27,9 @@ app.prepare().then(() => {
   }
   server.use(express.json())
   server.use(express.urlencoded({ extended: false }))
-  server.use(cookieParser(secret))
-  server.use(
-    session({
-      resave: true,
-      saveUninitialized: false,
-      secret,
-      cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7,
-        secure: false
-      },
-      store: new RedisStore({
-        host,
-        port: REDIS_PORT,
-        pass,
-        logErrors: true
-      })
-    })
-  )
-
+  server.use(cookieParser(COOKIE_KEY))
+  server.use(require('@lib/session'))
   server.use('/', require('./routes'))
-
   server.use(require('@middle/error'))
 
   server.get('*', (req, res) => handle(req, res))
