@@ -57,7 +57,7 @@ app.prepare().then(() => {
 
   server.use('/', require('./routes'))
 
-  server.use((err, req, res, next) => {
+  server.use((err, _req, res, _next) => {
     if (err) {
       console.error(err)
       res.status(err.status)
