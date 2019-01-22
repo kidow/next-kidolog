@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
 import { Search } from 'components/atoms'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as listActions from 'store/list'
 
-class SearchContainer extends Component {
+class SearchContainer extends React.Component {
   onChangeSearch = e => {
     const { ListActions } = this.props
     const { value } = e.target

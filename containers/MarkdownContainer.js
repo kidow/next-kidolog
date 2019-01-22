@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
 import { Markdown } from 'components/molecules'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as editorActions from 'store/editor'
 
-class MarkdownContainer extends Component {
+class MarkdownContainer extends React.Component {
   onChangeInput = ({ name, value }) => {
     const { EditorActions } = this.props
     EditorActions.changeInput({ name, value })

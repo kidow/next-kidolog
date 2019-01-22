@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
 import { Preview } from 'components/molecules'
 
 import { connect } from 'react-redux'
 
-class PreviewContainer extends Component {
+class PreviewContainer extends React.Component {
   render() {
     const { title, markdown } = this.props
     return <Preview title={title} markdown={markdown} />

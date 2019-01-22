@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
 import { Header } from 'components/organisms'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as authActions from 'store/auth'
 
-class HeaderContainer extends Component {
+class HeaderContainer extends React.Component {
   componentDidMount() {
     this.checkLogged()
   }

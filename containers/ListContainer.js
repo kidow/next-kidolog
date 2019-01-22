@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
 import { List } from 'components/organisms'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as listActions from 'store/list'
 
-class ListContainer extends Component {
+class ListContainer extends React.Component {
   prev = null
 
   componentDidMount() {

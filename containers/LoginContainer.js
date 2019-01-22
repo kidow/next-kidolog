@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import { Login } from 'components/organisms'
 import Router from 'next/router'
 
@@ -6,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as authActions from 'store/auth'
 
-class LoginContainer extends Component {
+class LoginContainer extends React.Component {
   onChangePassword = e => {
     const { AuthActions } = this.props
     const { value } = e.target

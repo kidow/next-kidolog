@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import { EditorTemplate } from 'components/templates'
 
 import { bindActionCreators } from 'redux'
@@ -9,7 +8,7 @@ import * as authActions from 'store/auth'
 
 import Router from 'next/router'
 
-class EditorTemplateContainer extends Component {
+class EditorTemplateContainer extends React.Component {
   state = {
     leftPercentage: 0.5
   }
