@@ -49,7 +49,7 @@ class ListContainer extends Component {
     const { scrollY } = window
     const { scrollHeight, clientHeight } = document.body
 
-    if (scrollHeight - clientHeight - 100 < scrollY) {
+    if (scrollHeight - clientHeight - 200 < scrollY) {
       this.getNext()
     }
   }
