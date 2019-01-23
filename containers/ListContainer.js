@@ -21,9 +21,7 @@ class ListContainer extends React.Component {
     try {
       await ListActions.getList({ tag })
       const { next } = this.props
-      if (next) {
-        ListActions.nextList(next)
-      }
+      if (next) ListActions.nextList(next)
     } catch (e) {
       console.log(e)
     }

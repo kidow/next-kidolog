@@ -13,17 +13,15 @@ class EditorTemplateContainer extends React.Component {
     leftPercentage: 0.5
   }
 
-  async componentDidMount() {
-    await this.checkLogged()
+  componentDidMount() {
+    this.checkLogged()
     this.initialize()
   }
 
   initialize = () => {
     const { EditorActions, id } = this.props
     EditorActions.initialize()
-    if (id) {
-      EditorActions.getPost(id)
-    }
+    if (id) EditorActions.getPost(id)
   }
 
   checkLogged = () => {
@@ -87,8 +85,7 @@ class EditorTemplateContainer extends React.Component {
     const post = {
       title,
       markdown,
-      tags:
-        tags === '' ? [] : [...new Set(tags.split(',').map(tag => tag.trim()))],
+      tags: tags === '' ? [] : [...new Set(tags.split(','))],
       thumbnail
     }
     try {
