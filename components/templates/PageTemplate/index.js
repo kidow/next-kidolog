@@ -1,6 +1,6 @@
 import './index.scss'
 import { Footer } from 'components/organisms'
-import { HeaderContainer } from 'containers'
+import { HeaderContainer } from 'containers/organisms'
 import './index.scss'
 
 const PageTemplate = ({ children }) => {

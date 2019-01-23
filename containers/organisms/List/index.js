@@ -46,7 +46,7 @@ class ListContainer extends React.Component {
     const { scrollY } = window
     const { scrollHeight, clientHeight } = document.body
 
-    if (scrollHeight - clientHeight - 200 < scrollY) {
+    if (scrollHeight - clientHeight - 200 <= scrollY) {
       this.getNext()
     }
   }

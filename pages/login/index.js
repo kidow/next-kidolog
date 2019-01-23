@@ -1,3 +1,3 @@
-import { LoginContainer } from 'containers'
+import { LoginContainer } from 'containers/organisms'
 
 export default () => <LoginContainer />

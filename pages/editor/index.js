@@ -1,5 +1,5 @@
 import { withRouter } from 'next/router'
-import { EditorTemplateContainer } from 'containers'
+import { EditorTemplateContainer } from 'containers/templates'
 
 const Editor = ({ router }) => {
   const { id } = router.query

@@ -1,6 +1,6 @@
 import { PostTemplate } from 'components/templates'
 import { Logo } from 'components/atoms'
-import { ContentContainer } from 'containers'
+import { ContentContainer } from 'containers/molecules'
 import { withRouter } from 'next/router'
 
 import axios from 'axios'

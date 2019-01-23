@@ -1,5 +1,6 @@
 import { PageTemplate, ListTemplate } from 'components/templates'
-import { SearchContainer, ListContainer } from 'containers'
+import { ListContainer } from 'containers/organisms'
+import { SearchContainer } from 'containers/atoms'
 import { withRouter } from 'next/router'
 
 const TagPage = ({ router }) => {
