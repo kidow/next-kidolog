@@ -1,1 +1,1 @@
-export { default as EditorTemplateContainer } from './EditorTemplate'
+export { default as EditorTemplateContainer } from './Editor'
