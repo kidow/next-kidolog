@@ -7,14 +7,37 @@
   padding: 0.5rem 0.75rem;
   cursor: pointer;
   user-select: none;
-  border: 1px solid $oc-gray-4;
   border-radius: 0.2rem;
-  &:hover {
-    background: $oc-gray-4;
-    color: $oc-gray-8;
-  }
   .icon {
     margin-right: 0.3rem;
+  }
+  &.default {
+    border: 1px solid $oc-gray-4;
+    &:hover {
+      background: $oc-gray-4;
+      color: $oc-gray-8;
+    }
+  }
+  &.facebook {
+    background: #3b5998;
+    color: white;
+    &:hover {
+      filter: brightness(105);
+    }
+  }
+  &.google {
+    background: #ea4335;
+    color: white;
+    &:hover {
+      filter: brightness(105);
+    }
+  }
+  &.github {
+    background: #333;
+    color: white;
+    &:hover {
+      filter: brightness(105);
+    }
   }
   @include media('<phone') {
     display: none;

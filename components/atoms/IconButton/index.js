@@ -1,8 +1,17 @@
-import './index.scss'
+import styles from './index.scss'
 import PropTypes from 'prop-types'
+import classNames from 'classnames/bind'
 
-const IconButton = ({ IconName, onClick, children, ...rest }) => (
-  <div className="icon-button" onClick={onClick}>
+const cx = classNames.bind(styles)
+
+const IconButton = ({
+  IconName,
+  onClick,
+  children,
+  theme = 'default',
+  ...rest
+}) => (
+  <div className={cx('icon-button', theme)} onClick={onClick}>
     <IconName className="icon" {...rest} />
     {children}
   </div>

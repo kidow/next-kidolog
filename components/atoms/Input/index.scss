@@ -41,4 +41,9 @@ input {
       background: none;
     }
   }
+  &.auth {
+    width: 100%;
+    border: 1px solid $oc-gray-3;
+    padding: 4px;
+  }
 }

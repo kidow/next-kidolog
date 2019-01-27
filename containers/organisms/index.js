@@ -1,3 +1,5 @@
 export { default as HeaderContainer } from './Header'
 export { default as ListContainer } from './List'
+export { default as AdminContainer } from './Admin'
+export { default as SignUpContainer } from './SignUp'
 export { default as LoginContainer } from './Login'

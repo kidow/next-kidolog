@@ -1,0 +1,14 @@
+@import '~styles/color';
+
+.signup__container {
+  width: 600px;
+  margin: 0 auto;
+  padding: 3rem;
+  background: white;
+  font-weight: bold;
+  .signup__title {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+}

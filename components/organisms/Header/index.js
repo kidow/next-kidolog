@@ -13,6 +13,11 @@ const Header = ({ logged }) => {
             <Button>새 포스트</Button>
           </Link>
         )}
+        {!logged && (
+          <Link href="/login">
+            <Button>로그인</Button>
+          </Link>
+        )}
       </div>
       <div className="header__divider" />
     </div>

@@ -1,0 +1,26 @@
+@import '~styles/color';
+@import '~styles/shadow';
+
+.admin__container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .admin__box {
+    background: white;
+    border: 1px solid $oc-orange-5;
+    width: 200px;
+    height: 140px;
+    @include shadow(3);
+    padding: 1rem;
+    h2 {
+      text-align: center;
+      color: $oc-orange-8;
+      font-weight: 600;
+    }
+    .input {
+      width: 100px;
+      margin: 0 auto;
+    }
+  }
+}
