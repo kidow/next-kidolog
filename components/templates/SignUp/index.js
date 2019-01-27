@@ -19,6 +19,10 @@ export default ({ error }) => (
       <Input theme="auth" placeholder="이메일" />
     </div>
     <div>
+      <Label>닉네임</Label>
+      <Input theme="auth" placeholder="닉네임" />
+    </div>
+    <div>
       <Label>비밀번호</Label>
       <Input theme="auth" placeholder="비밀번호" type="password" />
     </div>
