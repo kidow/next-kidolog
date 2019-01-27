@@ -1,5 +1,19 @@
 @import '~styles/color';
 @import '~styles/media';
+@import '~styles/shadow';
+
+@mixin oauth {
+  color: white;
+  padding: 1rem;
+  font-size: 1.3rem;
+  &:hover {
+    filter: brightness(1.1);
+    @include shadow(3);
+  }
+  &:active {
+    filter: brightness(0.85);
+  }
+}
 
 .icon-button {
   display: flex;
@@ -8,6 +22,7 @@
   cursor: pointer;
   user-select: none;
   border-radius: 0.2rem;
+  @include shadow(0);
   .icon {
     margin-right: 0.3rem;
   }
@@ -16,30 +31,33 @@
     &:hover {
       background: $oc-gray-4;
       color: $oc-gray-8;
+      @include shadow(3);
+    }
+    @include media('<phone') {
+      display: none;
     }
   }
   &.facebook {
     background: #3b5998;
-    color: white;
-    &:hover {
-      filter: brightness(105);
-    }
+    @include oauth;
   }
   &.google {
     background: #ea4335;
-    color: white;
-    &:hover {
-      filter: brightness(105);
-    }
+    @include oauth;
   }
   &.github {
     background: #333;
-    color: white;
-    &:hover {
-      filter: brightness(105);
-    }
+    @include oauth;
   }
-  @include media('<phone') {
-    display: none;
+  &.kakao {
+    background: #ffe812;
+    @include oauth;
+  }
+  &.naver {
+    background: #00c300;
+    @include oauth;
+  }
+  & + & {
+    margin-top: 0.6rem;
   }
 }

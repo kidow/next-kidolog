@@ -44,6 +44,8 @@ input {
   &.auth {
     width: 100%;
     border: 1px solid $oc-gray-3;
-    padding: 4px;
+    padding: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
   }
 }

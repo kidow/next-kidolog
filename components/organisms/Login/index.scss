@@ -1,0 +1,39 @@
+@import '~styles/color';
+
+@keyframes shake {
+  0% {
+    transform: translate(-30px);
+  }
+  25% {
+    transform: translate(15px);
+  }
+  50% {
+    transform: translate(-10px);
+  }
+  75% {
+    transform: translate(5px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
+.login__container {
+  width: 600px;
+  margin: 0 auto;
+  padding: 3rem;
+  background: white;
+  font-weight: bold;
+  .login__title {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  .error__container {
+    text-align: center;
+    color: $oc-red-6;
+    margin: 0.5rem 0;
+    animation: shake 0.3s ease-in;
+    animation-fill-mode: forwards;
+  }
+}

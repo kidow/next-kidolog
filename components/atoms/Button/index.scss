@@ -31,6 +31,22 @@
     }
   }
 
+  &.auth {
+    border: 1px solid $oc-orange-6;
+    color: $oc-orange-6;
+    &:hover {
+      background: $oc-orange-6;
+      color: white;
+      @include shadow(3);
+    }
+    &:active {
+      background: $oc-orange-8;
+    }
+    padding: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+  }
+
   & + & {
     margin-left: 1rem;
   }
