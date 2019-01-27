@@ -28,6 +28,12 @@
     font-size: 2rem;
     display: flex;
     justify-content: center;
+    color: $oc-orange-6;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+    margin-bottom: 1rem;
   }
   .error__container {
     text-align: center;
@@ -35,5 +41,13 @@
     margin: 0.5rem 0;
     animation: shake 0.3s ease-in;
     animation-fill-mode: forwards;
+  }
+  .link__container {
+    margin-top: 1rem;
+    text-align: right;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

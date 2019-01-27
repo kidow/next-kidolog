@@ -7,10 +7,13 @@ import {
   FaKickstarter,
   FaNeos
 } from 'react-icons/fa'
+import Link from 'next/link'
 
 export default ({ error }) => (
   <div className="login__container">
-    <div className="login__title">로그인</div>
+    <Link href="/">
+      <div className="login__title">Kidolog</div>
+    </Link>
     <div>
       <Label>이메일</Label>
       <Input theme="auth" placeholder="이메일" />
@@ -36,5 +39,8 @@ export default ({ error }) => (
     <IconButton IconName={FaNeos} size={25} theme="naver">
       네이버
     </IconButton>
+    <Link href="/signup">
+      <div className="link__container">회원가입</div>
+    </Link>
   </div>
 )
