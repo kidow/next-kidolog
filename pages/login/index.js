@@ -1,3 +1,3 @@
-import { LoginContainer } from 'containers/organisms'
+import { LoginTemplateContainer } from 'containers/templates'
 
-export default () => <LoginContainer />
+export default () => <LoginTemplateContainer />
