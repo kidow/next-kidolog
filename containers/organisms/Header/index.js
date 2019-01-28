@@ -2,7 +2,7 @@ import { Header } from 'components/organisms'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as authActions from 'store/auth'
+import * as adminActions from 'store/admin'
 
 class HeaderContainer extends React.Component {
   componentDidMount() {
@@ -10,8 +10,8 @@ class HeaderContainer extends React.Component {
   }
 
   checkLogged = () => {
-    const { AuthActions } = this.props
-    AuthActions.check()
+    const { AdminActions } = this.props
+    AdminActions.check()
   }
   render() {
     const { logged } = this.props
@@ -24,6 +24,6 @@ export default connect(
     logged: auth.logged
   }),
   dispatch => ({
-    AuthActions: bindActionCreators(authActions, dispatch)
+    AdminActions: bindActionCreators(adminActions, dispatch)
   })
 )(HeaderContainer)

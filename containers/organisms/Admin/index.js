@@ -3,19 +3,19 @@ import Router from 'next/router'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as authActions from 'store/auth'
+import * as adminActions from 'store/admin'
 
 class AdminContainer extends React.Component {
   onChangePassword = e => {
-    const { AuthActions } = this.props
+    const { AdminActions } = this.props
     const { value } = e.target
-    AuthActions.changePassword(value)
+    AdminActions.changePassword(value)
   }
 
   onLogin = async () => {
-    const { AuthActions, password } = this.props
+    const { AdminActions, password } = this.props
     try {
-      await AuthActions.login(password)
+      await AdminActions.login(password)
       localStorage.logged = 'true'
       Router.push('/')
     } catch (e) {
@@ -41,10 +41,10 @@ class AdminContainer extends React.Component {
 }
 
 export default connect(
-  ({ auth }) => ({
-    password: auth.password
+  ({ admin }) => ({
+    password: admin.password
   }),
   dispatch => ({
-    AuthActions: bindActionCreators(authActions, dispatch)
+    AdminActions: bindActionCreators(adminActions, dispatch)
   })
 )(AdminContainer)
