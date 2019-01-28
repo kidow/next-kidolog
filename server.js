@@ -29,6 +29,7 @@ app.prepare().then(() => {
   server.use(express.urlencoded({ extended: false }))
   server.use(cookieParser(COOKIE_KEY))
   server.use(require('@lib/session'))
+  server.use(require('@lib/jwt').jwtMiddleware)
   server.use('/', require('./routes'))
   server.use(require('@middle/error'))
 
