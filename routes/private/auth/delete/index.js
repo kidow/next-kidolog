@@ -1,6 +1,5 @@
 const router = require('express').Router()
 
-router.use(require('./post'))
-router.use(require('./delete'))
+router.delete('/logout', require('./logout'))
 
 module.exports = router
