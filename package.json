@@ -51,7 +51,8 @@
     "redux-actions": "^2.6.4",
     "redux-pender": "^2.0.9",
     "redux-saga": "^1.0.0",
-    "remove-markdown": "^0.3.0"
+    "remove-markdown": "^0.3.0",
+    "rollbar": "^2.5.2"
   },
   "devDependencies": {
     "@types/next": "^7.0.6",

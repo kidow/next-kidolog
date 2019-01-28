@@ -17,6 +17,7 @@ app.prepare().then(() => {
   const server = express()
 
   require('./lib/moduleAlias')
+  require('@lib/rollbar')
   require('./models')()
 
   if (NODE_ENV === 'development') {
