@@ -3,7 +3,10 @@ const mongoose = require('mongoose')
 const Account = new mongoose.Schema({
   email: String,
   password: String,
-  nickname: { type: String, unique: true },
+  profile: {
+    nickname: String,
+    thumbnail: { type: String, default: '/static/default_thumbnail.png' }
+  },
   social: {
     facebook: { id: String, accessToken: String },
     google: { id: String, accessToken: String },

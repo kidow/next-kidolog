@@ -4,7 +4,7 @@ module.exports = function() {
   return encodeToken(
     {
       _id: this._id,
-      nickname: this.nickname
+      profile: this.profile
     },
     'account'
   )
