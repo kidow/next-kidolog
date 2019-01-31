@@ -6,6 +6,6 @@ module.exports = function() {
       _id: this._id,
       profile: this.profile
     },
-    'account'
+    'user'
   )
 }

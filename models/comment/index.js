@@ -6,7 +6,7 @@ const {
 const Comment = new mongoose.Schema({
   nickname: {
     type: ObjectId,
-    ref: 'Account'
+    ref: 'User'
   },
   text: String,
   createdAt: {

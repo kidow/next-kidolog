@@ -5,7 +5,7 @@ module.exports = function({
   accessToken,
   socialId
 }) {
-  const account = new this({
+  const user = new this({
     nickname,
     email,
     social: {
@@ -16,5 +16,5 @@ module.exports = function({
     }
   })
 
-  return account.save()
+  return user.save()
 }
