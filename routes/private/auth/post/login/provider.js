@@ -1,6 +1,7 @@
 const Joi = require('joi')
 const CustomError = require('@error')
 
+// POST /prv/auth/login/:provider(facebook|google|github|naver|kakao)
 module.exports = async (req, res, next) => {
   const schema = Joi.object().keys({
     accessToken: Joi.string().required()

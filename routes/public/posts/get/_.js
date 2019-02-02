@@ -1,5 +1,6 @@
 const Post = require('@models/post')
 
+// POST /posts/
 module.exports = async (req, res, next) => {
   const { cursor, tag, search } = req.query
 

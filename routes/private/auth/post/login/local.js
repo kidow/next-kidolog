@@ -1,6 +1,7 @@
 const Joi = require('joi')
 const CustomError = require('@error')
 
+// POST /prv/auth/login/local
 module.exports = async (req, res, next) => {
   const schema = Joi.object().keys({
     email: Joi.string()
@@ -9,6 +10,7 @@ module.exports = async (req, res, next) => {
     password: Joi.string()
       .min(6)
       .max(20)
+      .required()
   })
   const { error } = Joi.validate(req.body, schema)
   if (error) return next(error)

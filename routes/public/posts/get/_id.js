@@ -1,6 +1,7 @@
 const Post = require('@models/post')
 const CustomError = require('@error')
 
+// POST /posts/:id
 module.exports = async (req, res, next) => {
   const { id } = req.params
 

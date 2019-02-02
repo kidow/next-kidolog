@@ -2,6 +2,7 @@ const Post = require('@models/post')
 const CustomError = require('@error')
 const Joi = require('joi')
 
+// PATCH /prv/posts/:id
 module.exports = async (req, res, next) => {
   const schema = Joi.object().keys({
     title: Joi.string().required(),

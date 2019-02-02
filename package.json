@@ -30,6 +30,7 @@
     "include-media": "^1.4.9",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
     "marked": "^0.6.0",
     "module-alias": "^2.1.0",
     "moment": "^2.23.0",

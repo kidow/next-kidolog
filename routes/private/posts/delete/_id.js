@@ -1,5 +1,6 @@
 const Post = require('@models/post')
 
+// DELETE /prv/posts/:id/
 module.exports = async (req, res, next) => {
   const { id } = req.params
 

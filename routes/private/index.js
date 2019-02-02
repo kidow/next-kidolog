@@ -1,8 +1,9 @@
 const router = require('express').Router()
-const { checkLogin } = require('@middle')
+const { checkAdmin } = require('@middle')
 
 router.use('/auth', require('./auth'))
-router.use('/admin', checkLogin, require('./admin'))
+router.use('/admin', checkAdmin, require('./admin'))
 router.use('/posts', require('./posts'))
+router.use('/user', require('./user'))
 
 module.exports = router

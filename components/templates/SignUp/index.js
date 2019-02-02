@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa'
 import Link from 'next/link'
 
-export default ({ error, email, password, nickname, onChange }) => (
+export default ({ error, form, onChange, onKeyPress, localRegister }) => (
   <div className="signup__container">
     <Link href="/">
       <div className="signup__title">Kidolog</div>
@@ -19,7 +19,7 @@ export default ({ error, email, password, nickname, onChange }) => (
       <Input
         theme="auth"
         placeholder="이메일"
-        value={email}
+        value={form.email}
         name="email"
         onChange={onChange}
       />
@@ -29,7 +29,7 @@ export default ({ error, email, password, nickname, onChange }) => (
       <Input
         theme="auth"
         placeholder="닉네임"
-        value={nickname}
+        value={form.nickname}
         name="nickname"
         onChange={onChange}
       />
@@ -41,12 +41,15 @@ export default ({ error, email, password, nickname, onChange }) => (
         placeholder="비밀번호"
         type="password"
         name="password"
-        value={password}
+        value={form.password}
         onChange={onChange}
+        onKeyPress={onKeyPress}
       />
     </div>
     {error && <div className="error__container">{error}</div>}
-    <Button theme="auth">회원가입</Button>
+    <Button theme="auth" onClick={localRegister}>
+      회원가입
+    </Button>
     <IconButton IconName={FaFacebook} size={25} theme="facebook">
       페이스북
     </IconButton>

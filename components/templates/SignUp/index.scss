@@ -33,12 +33,12 @@
     &:hover {
       text-decoration: underline;
     }
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
   .error__container {
     text-align: center;
     color: $oc-red-6;
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 1rem;
     animation: shake 0.3s ease-in;
     animation-fill-mode: forwards;
   }

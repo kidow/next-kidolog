@@ -2,6 +2,7 @@ const Joi = require('joi')
 const CustomError = require('@error')
 const User = require('@models/user')
 
+// GET /exists/email/:email/
 module.exports = async (req, res, next) => {
   const { email } = req.params
 

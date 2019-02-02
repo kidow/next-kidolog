@@ -2,6 +2,7 @@ const Post = require('@models/post')
 const Joi = require('joi')
 const CustomError = require('@error')
 
+// POST /prv/posts/
 module.exports = async (req, res, next) => {
   const schema = Joi.object().keys({
     title: Joi.string().required(),

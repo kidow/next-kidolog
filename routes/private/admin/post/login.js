@@ -1,6 +1,7 @@
 const Joi = require('joi')
 const CustomError = require('@error')
 
+// POST /prv/admin/login/
 module.exports = (req, res, next) => {
   const { password } = req.body
 
