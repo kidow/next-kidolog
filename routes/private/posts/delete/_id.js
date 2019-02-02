@@ -8,6 +8,6 @@ module.exports = async (req, res, next) => {
     await Post.findByIdAndRemove(id).exec()
     res.sendStatus(204)
   } catch (err) {
-    next(err)
+    return next(err)
   }
 }

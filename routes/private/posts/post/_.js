@@ -23,6 +23,6 @@ module.exports = async (req, res, next) => {
     const post = await Post.write(req.body)
     res.json(post)
   } catch (err) {
-    next(err)
+    return next(err)
   }
 }

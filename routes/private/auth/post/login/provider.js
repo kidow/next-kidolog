@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
     const user = await User.findBySocialId({ provider, id })
     if (user) {
       const socialToken = await user.encodeToken()
-      res.cookies('access_token', socialToken, {
+      res.cookie('access_token', socialToken, {
         maxAge: 1000 * 60 * 60 * 24 * 7,
         httpOnly: true
       })
@@ -34,7 +34,7 @@ module.exports = async (req, res, next) => {
         }
         await duplicated.save()
         const socialToken = await user.encodeToken()
-        res.cookies('access_token', socialToken, {
+        res.cookie('access_token', socialToken, {
           maxAge: 1000 * 60 * 60 * 24 * 7,
           httpOnly: true
         })
@@ -43,6 +43,6 @@ module.exports = async (req, res, next) => {
     }
     if (user) return next(new CustomError('user is not exists.', 204))
   } catch (err) {
-    next(err)
+    return next(err)
   }
 }

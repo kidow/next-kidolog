@@ -14,21 +14,25 @@ module.exports = async (req, res, next) => {
     password: Joi.string()
       .min(6)
       .max(20)
+      .required()
   })
   const { error } = Joi.validate(req.body, schema)
   if (error) return next(error)
 
-  const { email, nickname, password } = req.body
-
   try {
+    const exists = await User.findByEmailOrNickname(req.body)
+    if (exists)
+      return res.status(409).json({
+        key: exists.email === req.body.email ? 'email' : 'nickname'
+      })
     const user = await User.localRegister(req.body)
     const accessToken = await user.encodeToken()
-    res.cookies('access_token', accessToken, {
+    res.cookie('access_token', accessToken, {
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true
     })
-    res.json(user)
+    res.json(user.profile)
   } catch (err) {
-    next(err)
+    return next(err)
   }
 }

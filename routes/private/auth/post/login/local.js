@@ -21,12 +21,12 @@ module.exports = async (req, res, next) => {
     const validated = await user.validatePassword(password)
     if (!validated) return next(new CustomError('password is not validated.'))
     const accessToken = await user.encodeToken()
-    res.cookies('access_token', accessToken, {
+    res.cookie('access_token', accessToken, {
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true
     })
     res.json(user)
   } catch (err) {
-    next(err)
+    return next(err)
   }
 }

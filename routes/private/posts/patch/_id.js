@@ -30,6 +30,6 @@ module.exports = async (req, res, next) => {
     }
     res.json(post)
   } catch (err) {
-    next(err)
+    return next(err)
   }
 }

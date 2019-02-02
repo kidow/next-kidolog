@@ -20,6 +20,7 @@ const User = new mongoose.Schema({
 User.statics.findByEmail = require('./findByEmail')
 User.statics.findByNickname = require('./findByNickname')
 User.statics.findBySocialId = require('./findBySocialId')
+User.statics.findByEmailOrNickname = require('./findByEmailOrNickname')
 User.statics.localRegister = require('./localRegister')
 User.statics.socialRegister = require('./socialRegister')
 

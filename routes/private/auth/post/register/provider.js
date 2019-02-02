@@ -39,7 +39,7 @@ module.exports = async (req, res, next) => {
       socialId
     })
     const socialToken = await user.encodeToken()
-    res.cookies('access_token', socialToken, {
+    res.cookie('access_token', socialToken, {
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true
     })
