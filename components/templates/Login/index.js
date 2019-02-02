@@ -9,18 +9,31 @@ import {
 } from 'react-icons/fa'
 import Link from 'next/link'
 
-export default ({ error }) => (
+export default ({ error, email, password, onChange }) => (
   <div className="login__container">
     <Link href="/">
       <div className="login__title">Kidolog</div>
     </Link>
     <div>
       <Label>이메일</Label>
-      <Input theme="auth" placeholder="이메일" />
+      <Input
+        theme="auth"
+        placeholder="이메일"
+        name="email"
+        value={email}
+        onChange={onChange}
+      />
     </div>
     <div>
       <Label>비밀번호</Label>
-      <Input theme="auth" placeholder="비밀번호" type="password" />
+      <Input
+        theme="auth"
+        placeholder="비밀번호"
+        type="password"
+        name="password"
+        value={password}
+        onChange={onChange}
+      />
     </div>
     {error && <div className="error__container">{error}</div>}
     <Button theme="auth">로그인</Button>

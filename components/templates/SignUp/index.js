@@ -20,6 +20,7 @@ export default ({ error, email, password, nickname, onChange }) => (
         theme="auth"
         placeholder="이메일"
         value={email}
+        name="email"
         onChange={onChange}
       />
     </div>
@@ -29,6 +30,7 @@ export default ({ error, email, password, nickname, onChange }) => (
         theme="auth"
         placeholder="닉네임"
         value={nickname}
+        name="nickname"
         onChange={onChange}
       />
     </div>
@@ -38,6 +40,7 @@ export default ({ error, email, password, nickname, onChange }) => (
         theme="auth"
         placeholder="비밀번호"
         type="password"
+        name="password"
         value={password}
         onChange={onChange}
       />

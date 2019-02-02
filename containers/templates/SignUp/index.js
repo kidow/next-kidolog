@@ -12,13 +12,8 @@ class SignUpTemplateContainer extends React.Component {
   }
   checkEmail = () => {}
   checkNickname = () => {}
-  onFacebookSignUp = () => {
-    const { AuthActions } = this.props
-    AuthActions.facebookSignup()
-  }
-  onGoogleSignUp = () => {
-    const { AuthActions } = this.props
-    AuthActions.googleSignup()
+  localRegister = async () => {
+    const { AuthActions, form, error } = this.props
   }
   render() {
     const { email, password, nickname, error } = this.props
