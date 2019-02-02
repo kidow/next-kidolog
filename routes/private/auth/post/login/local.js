@@ -1,5 +1,6 @@
 const Joi = require('joi')
 const CustomError = require('@error')
+const User = require('@models/user')
 
 // POST /prv/auth/login/local
 module.exports = async (req, res, next) => {
@@ -14,6 +15,8 @@ module.exports = async (req, res, next) => {
   })
   const { error } = Joi.validate(req.body, schema)
   if (error) return next(error)
+
+  const { email, password } = req.body
 
   try {
     const user = await User.findByEmail(email)
