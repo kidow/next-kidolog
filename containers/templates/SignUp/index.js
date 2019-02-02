@@ -1,4 +1,6 @@
 import { SignUpTemplate } from 'components/templates'
+import { isEmail, isLength } from 'validator'
+import storage from 'lib/storage'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -10,10 +12,37 @@ class SignUpTemplateContainer extends React.Component {
     const { name, value } = e.target
     AuthActions.changeInput({ name, value, form: 'register' })
   }
-  checkEmail = () => {}
-  checkNickname = () => {}
+  setError = message => {
+    const { AuthActions } = this.props
+    AuthActions.setError({ form: 'register', message })
+  }
+  checkEmail = async () => {
+    const { AuthActions, email, exists } = this.props
+    try {
+      await AuthActions.checkEmailExists(email)
+      if (exists.email) this.setError('이미 존재하는 이메일입니다.')
+      else this.setError(null)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  checkNickname = async () => {
+    const { AuthActions, nickname, exists } = this.props
+    try {
+      await AuthActions.checkNicknameExists(nickname)
+      if (exists.nickname) this.setError('이미 존재하는 닉네임입니다.')
+      else this.setError(null)
+    } catch (err) {
+      console.error(err)
+    }
+  }
   localRegister = async () => {
     const { AuthActions, form, error } = this.props
+    try {
+      await AuthActions.localRegister(form)
+    } catch (err) {
+      console.error(err)
+    }
   }
   render() {
     const { email, password, nickname, error } = this.props
