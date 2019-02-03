@@ -3,14 +3,14 @@ import { Content } from 'components/molecules'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as postActions from 'store/post'
-import * as authActions from 'store/auth'
+import * as adminActions from 'store/admin'
 
 import Router from 'next/router'
 
 class ContentContainer extends React.Component {
   checkLogged = () => {
-    const { AuthActions } = this.props
-    AuthActions.check()
+    const { AdminActions } = this.props
+    AdminActions.check()
   }
 
   onRemove = async () => {
@@ -46,11 +46,11 @@ class ContentContainer extends React.Component {
 }
 
 export default connect(
-  ({ auth }) => ({
-    logged: auth.logged
+  ({ admin }) => ({
+    logged: admin.logged
   }),
   dispatch => ({
     PostActions: bindActionCreators(postActions, dispatch),
-    AuthActions: bindActionCreators(authActions, dispatch)
+    AdminActions: bindActionCreators(adminActions, dispatch)
   })
 )(ContentContainer)

@@ -1,4 +1,5 @@
 import { LoginTemplate } from 'components/templates'
+import storage from 'lib/storage'
 import Router from 'next/router'
 
 import { connect } from 'react-redux'

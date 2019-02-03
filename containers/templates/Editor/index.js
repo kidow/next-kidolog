@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as editorActions from 'store/editor'
 import * as postActions from 'store/post'
-import * as authActions from 'store/auth'
+import * as adminActions from 'store/admin'
 
 import Router from 'next/router'
 
@@ -25,8 +25,8 @@ class EditorTemplateContainer extends React.Component {
   }
 
   checkLogged = () => {
-    const { AuthActions } = this.props
-    AuthActions.check()
+    const { AdminActions } = this.props
+    AdminActions.check()
   }
 
   onUploadClick = () => {
@@ -154,17 +154,17 @@ class EditorTemplateContainer extends React.Component {
 }
 
 export default connect(
-  ({ auth, editor }) => ({
+  ({ admin, editor }) => ({
     title: editor.title,
     markdown: editor.markdown,
     tags: editor.tags,
     thumbnail: editor.thumbnail,
-    logged: auth.logged,
+    logged: admin.logged,
     postId: editor.postId
   }),
   dispatch => ({
     EditorActions: bindActionCreators(editorActions, dispatch),
     PostActions: bindActionCreators(postActions, dispatch),
-    AuthActions: bindActionCreators(authActions, dispatch)
+    AdminActions: bindActionCreators(adminActions, dispatch)
   })
 )(EditorTemplateContainer)

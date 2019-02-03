@@ -1,5 +1,5 @@
 // DELETE /prv/user/logout/
 module.exports = (_, res) => {
-  res.cookie('access_token', null, { maxAge: 0, httpOnly: true })
+  res.clearCookie('access_token')
   res.sendStatus(204)
 }
