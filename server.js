@@ -33,6 +33,8 @@ app.prepare().then(() => {
   server.use('/', require('./routes'))
   server.use(require('@middle/error'))
 
+  server.all('/health', (_, res) => res.sendStatus(200))
+
   server.get('*', (req, res) => handle(req, res))
 
   server.use(handle).listen(port, err => {
