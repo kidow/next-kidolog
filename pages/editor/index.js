@@ -1,9 +1,9 @@
 import { withRouter } from 'next/router'
-import { EditorTemplateContainer } from 'containers/templates'
+import { EditorTemplate } from 'components/templates'
 
 const Editor = ({ router }) => {
   const { id } = router.query
-  return <EditorTemplateContainer id={id} />
+  return <EditorTemplate id={id} />
 }
 
 export default withRouter(Editor)
