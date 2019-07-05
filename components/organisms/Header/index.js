@@ -1,9 +1,18 @@
 import './index.scss'
 import { Button, Logo } from 'components/atoms'
 import Link from 'next/link'
-import PropTypes from 'prop-types'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { check } from 'store/auth'
 
-const Header = ({ logged }) => {
+const Header = _ => {
+  const { logged } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
+  useEffect(_ => {
+    dispatch(check())
+  }, [])
+
   return (
     <div className="header__container">
       <div className="header__content">
@@ -17,10 +26,6 @@ const Header = ({ logged }) => {
       <div className="header__divider" />
     </div>
   )
-}
-
-Header.propTypes = {
-  logged: PropTypes.bool
 }
 
 export default Header
