@@ -1,8 +1,33 @@
 import './index.scss'
 import { Input } from 'components/atoms'
-import PropTypes from 'prop-types'
+import Router from 'next/router'
+import { useCallback, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { changePassword, login } from 'store/auth'
 
-const Login = ({ password, onChangePassword, onKeyPress }) => {
+const Login = _ => {
+  const { password, logged } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
+  const onChangePassword = useCallback(e =>
+    dispatch(changePassword(e.target.value))
+  )
+
+  const onLogin = useCallback(async () => {
+    try {
+      await dispatch(login(password))
+      Router.push('/')
+    } catch (e) {
+      console.log(e)
+    }
+  })
+
+  const onKeyPress = useCallback(e => e.key === 'Enter' && onLogin())
+
+  useEffect(_ => {
+    if (logged) Router.push('/')
+  }, [])
+
   return (
     <div className="login__container">
       <div className="login__box">
@@ -21,12 +46,6 @@ const Login = ({ password, onChangePassword, onKeyPress }) => {
       </div>
     </div>
   )
-}
-
-Login.propTypes = {
-  password: PropTypes.string,
-  onChangePassword: PropTypes.func,
-  onKeyPress: PropTypes.func
 }
 
 export default Login
