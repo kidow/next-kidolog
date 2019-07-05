@@ -1,14 +1,13 @@
 import styles from './index.scss'
 import classNames from 'classnames/bind'
 import { Input, Button, Icon, IconButton } from 'components/atoms'
-import { PreviewContainer } from 'containers/molecules'
 
 import { IoIosArrowDropleft, IoIosImage } from 'react-icons/io'
 import { MdFileUpload } from 'react-icons/md'
 
 import Router from 'next/router'
 import PropTypes from 'prop-types'
-import { Markdown } from 'components/molecules'
+import { Markdown, Preview } from 'components/molecules'
 
 const cx = classNames.bind(styles)
 
@@ -66,7 +65,7 @@ const EditorTemplate = ({
           <Markdown />
         </div>
         <div style={previewStyle} className={cx('content__flex', 'none')}>
-          <PreviewContainer />
+          <Preview />
         </div>
         <div
           className="content__separator"
