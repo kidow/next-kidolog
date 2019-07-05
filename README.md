@@ -6,6 +6,8 @@ https://www.kidolog.com
 
 ![title](/static/readme.png)
 
+##### React hooks applied. (07. 05. 2019)
+
 ## Project Stack (-> 차후 변경할 것들)
 
 ### Front-end :
@@ -19,7 +21,6 @@ https://www.kidolog.com
   - open-color
   - include-media
   - classnames
-  - node-sass
 - State Management
   - immer
   - react-redux
