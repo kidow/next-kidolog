@@ -1,9 +1,9 @@
 import { PostTemplate } from 'components/templates'
 import { Logo } from 'components/atoms'
-import { ContentContainer } from 'containers/molecules'
 import { withRouter } from 'next/router'
 
 import axios from 'axios'
+import { Content } from 'components/molecules'
 
 class Post extends React.Component {
   static async getInitialProps({ query }) {
@@ -16,7 +16,7 @@ class Post extends React.Component {
     return (
       <PostTemplate>
         <Logo theme="post" />
-        <ContentContainer post={post} />
+        <Content post={post} />
       </PostTemplate>
     )
   }
