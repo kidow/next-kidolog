@@ -6,7 +6,6 @@ module.exports = withSass(
   withCSS({
     webpack(config) {
       config.resolve.alias['components'] = path.join(__dirname, 'components')
-      config.resolve.alias['containers'] = path.join(__dirname, 'containers')
       config.resolve.alias['lib'] = path.join(__dirname, 'lib')
       config.resolve.alias['store'] = path.join(__dirname, 'lib/store')
       config.resolve.alias['styles'] = path.join(__dirname, 'lib/styles')
