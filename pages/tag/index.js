@@ -1,14 +1,14 @@
 import { PageTemplate, ListTemplate } from 'components/templates'
 import { ListContainer } from 'containers/organisms'
-import { SearchContainer } from 'containers/atoms'
 import { withRouter } from 'next/router'
+import { Search } from 'components/atoms'
 
 const TagPage = ({ router }) => {
   const { tag } = router.query
   return (
     <PageTemplate>
       <ListTemplate>
-        <SearchContainer />
+        <Search />
         <ListContainer tag={tag} />
       </ListTemplate>
     </PageTemplate>

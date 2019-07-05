@@ -1,11 +1,11 @@
 import { PageTemplate, ListTemplate } from 'components/templates'
 import { ListContainer } from 'containers/organisms'
-import { SearchContainer } from 'containers/atoms'
+import { Search } from 'components/atoms'
 
 export default () => (
   <PageTemplate>
     <ListTemplate>
-      <SearchContainer />
+      <Search />
       <ListContainer />
     </ListTemplate>
   </PageTemplate>
