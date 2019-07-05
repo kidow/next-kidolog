@@ -37,7 +37,7 @@ const Markdown = _ => {
     [markdown]
   )
 
-  const initialize = () => {
+  const initialize = useCallback(() => {
     codeMirror = CodeMirror(editorRef.current, {
       mode: 'markdown',
       theme: 'monokai',
@@ -45,24 +45,24 @@ const Markdown = _ => {
       lineWrapping: true
     })
     codeMirror.on('change', onChangeMarkdown)
-  }
+  })
 
   const onChangeInput = useCallback(({ name, value }) =>
     dispatch(changeInput({ name, value }))
   )
 
-  const onChange = e => {
+  const onChange = useCallback(e => {
     const { name, value } = e.target
     onChangeInput({ name, value })
-  }
+  })
 
-  const onChangeMarkdown = doc => {
+  const onChangeMarkdown = useCallback(doc => {
     cursor = doc.getCursor()
     onChangeInput({
       name: 'markdown',
       value: doc.getValue()
     })
-  }
+  })
 
   useEffect(
     _ => {

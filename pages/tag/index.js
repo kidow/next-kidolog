@@ -1,5 +1,5 @@
 import { PageTemplate, ListTemplate } from 'components/templates'
-import { ListContainer } from 'containers/organisms'
+import { List } from 'components/organisms'
 import { withRouter } from 'next/router'
 import { Search } from 'components/atoms'
 
@@ -9,7 +9,7 @@ const TagPage = ({ router }) => {
     <PageTemplate>
       <ListTemplate>
         <Search />
-        <ListContainer tag={tag} />
+        <List tag={tag} />
       </ListTemplate>
     </PageTemplate>
   )
