@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 import './index.scss'
 import { Input } from 'components/atoms'
-import PropTypes from 'prop-types'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeInput } from 'store/editor'
 
 let CodeMirror
 if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
@@ -19,86 +20,79 @@ if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
 
-class Markdown extends Component {
-  editor = null
-  cursor = null
-  codeMirror = null
+const Markdown = _ => {
+  let cursor = null
+  let codeMirror = null
+  const { markdown, tags } = useSelector(state => state.editor)
+  const dispatch = useDispatch()
+  const editorRef = useRef()
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.markdown !== this.props.markdown) {
-      const { codeMirror, cursor } = this
+  useEffect(
+    _ => {
       if (!codeMirror) return
-      codeMirror.setValue(this.props.markdown)
+      codeMirror.setValue(markdown)
       if (!cursor) return
       codeMirror.setCursor(cursor)
-    }
-  }
+    },
+    [markdown]
+  )
 
-  initialize = () => {
-    this.codeMirror = CodeMirror(this.editor, {
+  const initialize = () => {
+    codeMirror = CodeMirror(editorRef.current, {
       mode: 'markdown',
       theme: 'monokai',
       lineNumbers: true,
       lineWrapping: true
     })
-    this.codeMirror.on('change', this.onChangeMarkdown)
+    codeMirror.on('change', onChangeMarkdown)
   }
 
-  onChange = e => {
-    const { onChangeInput } = this.props
+  const onChangeInput = useCallback(({ name, value }) =>
+    dispatch(changeInput({ name, value }))
+  )
+
+  const onChange = e => {
     const { name, value } = e.target
     onChangeInput({ name, value })
   }
 
-  onChangeMarkdown = doc => {
-    const { onChangeInput } = this.props
-    this.cursor = doc.getCursor()
+  const onChangeMarkdown = doc => {
+    cursor = doc.getCursor()
     onChangeInput({
       name: 'markdown',
       value: doc.getValue()
     })
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { codeMirror, cursor } = this
-    if (!codeMirror) return
-    codeMirror.setValue(this.props.markdown)
-    if (!cursor) return
-    codeMirror.setCursor(cursor)
-  }
+  useEffect(
+    _ => {
+      if (!codeMirror) return
+      codeMirror.setValue(markdown)
+      if (!cursor) return
+      codeMirror.setCursor(cursor)
+    },
+    [true]
+  )
 
-  componentDidMount() {
-    this.initialize()
-  }
+  useEffect(_ => {
+    initialize()
+  }, [])
 
-  render() {
-    const { onChange } = this
-    const { tags } = this.props
-    return (
-      <div className="markdown__container">
-        <div
-          className="markdown__code-editor"
-          ref={ref => (this.editor = ref)}
+  return (
+    <div className="markdown__container">
+      <div className="markdown__code-editor" ref={editorRef} />
+      <div className="markdown__tags">
+        <div className="markdown__description">태그</div>
+        <Input
+          value={tags}
+          onChange={onChange}
+          name="tags"
+          placeholder="태그를 입력하세요 (쉼표로 구분)"
+          theme="tag"
         />
-        <div className="markdown__tags">
-          <div className="markdown__description">태그</div>
-          <Input
-            value={tags}
-            onChange={onChange}
-            name="tags"
-            placeholder="태그를 입력하세요 (쉼표로 구분)"
-            theme="tag"
-          />
-        </div>
       </div>
-    )
-  }
-}
-
-Markdown.propTypes = {
-  tags: PropTypes.string,
-  onChangeInput: PropTypes.func,
-  markdown: PropTypes.string
+    </div>
+  )
 }
 
 export default Markdown
