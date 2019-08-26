@@ -4,7 +4,7 @@ const path = require('path')
 
 const BASE_URL =
   process.env.NODE_ENV === 'production'
-    ? 'https://kidolog.com'
+    ? 'https://www.kidolog.com'
     : 'http://localhost:3000'
 
 module.exports = withSass(
