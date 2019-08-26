@@ -28,8 +28,8 @@ const Item = ({ title, markdown, createdAt, id, thumbnail, pending }) => {
         <div className="title__date">{moment(createdAt).fromNow()}</div>
       </div>
       <div className="item__description">
-        {removeMd(markdown).length > 120
-          ? `${removeMd(markdown).slice(0, 120)}...`
+        {removeMd(markdown).length > 90
+          ? `${removeMd(markdown).slice(0, 90)}...`
           : removeMd(markdown)}
       </div>
     </div>
