@@ -14,9 +14,7 @@ module.exports = async (req, res, next) => {
 
   const result = Joi.validate(req.body, schema)
 
-  if (result.error) {
-    return next(new CustomError('Joi error', 400))
-  }
+  if (result.error) return next(new CustomError('Joi error', 400))
 
   try {
     const post = await Post.write(req.body)

@@ -23,10 +23,10 @@ import { check } from 'store/auth'
 
 const cx = classNames.bind(styles)
 
-const EditorTemplate = ({ id }) => {
+const EditorTemplate = ({ post }) => {
   const [leftPercentage, setLeftPercentage] = useState(0.5)
   const { logged } = useSelector(state => state.auth)
-  const { title, markdown, tags, thumbnail, postId } = useSelector(
+  const { title, markdown, tags, thumbnail } = useSelector(
     state => state.editor
   )
   const dispatch = useDispatch()
@@ -34,7 +34,7 @@ const EditorTemplate = ({ id }) => {
   useEffect(_ => {
     dispatch(check())
     dispatch(initialize())
-    if (id) dispatch(getPost(id))
+    if (post._id) dispatch(getPost(post))
   }, [])
 
   const onUploadClick = useCallback(() => {
@@ -68,7 +68,7 @@ const EditorTemplate = ({ id }) => {
   })
 
   const onSubmit = useCallback(async () => {
-    const data = {
+    const payload = {
       title,
       markdown,
       tags: tags ? [...new Set(tags.split(','))] : [],
@@ -76,13 +76,12 @@ const EditorTemplate = ({ id }) => {
     }
     try {
       if (!logged) return alert('로그인이 필요합니다')
-      if (id) {
-        await dispatch(updatePost({ id, ...data }))
-        return Router.push(`/post/${id}`)
+      if (post._id) {
+        await dispatch(updatePost({ id: post._id, ...payload }))
+        return Router.push(`/post/${post._id}`)
       }
-      await dispatch(writePost(data))
-      // postId에 _id가 담겼는데도 즉각 반영이 안되고 있음.
-      Router.push(`/post/${postId}`)
+      const { data } = await dispatch(writePost(payload))
+      Router.push(`/post/${data._id}`)
     } catch (e) {
       console.log(e)
     }
@@ -141,7 +140,7 @@ const EditorTemplate = ({ id }) => {
             업로드
           </IconButton>
           <div className="spacer" />
-          <Button onClick={onSubmit}>{id ? '수정' : '작성'}하기</Button>
+          <Button onClick={onSubmit}>{post._id ? '수정' : '작성'}하기</Button>
         </div>
       </div>
       <div className="editor__content">

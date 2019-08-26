@@ -1,75 +1,81 @@
 import './index.scss'
 import { Item } from 'components/molecules'
-import PropTypes from 'prop-types'
-import { useEffect, useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getList, nextList, showNextList } from 'store/list'
 
-const List = ({ tag }) => {
-  const { posts, next, nextPosts } = useSelector(state => state.list)
-  const { pending } = useSelector(state => state.pender)
-  const dispatch = useDispatch()
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as listActions from 'store/list'
 
-  let prev = null
+class ListContainer extends React.Component {
+  prev = null
 
-  const getPosts = useCallback(async () => {
+  componentDidMount() {
+    this.getList()
+    window.addEventListener('scroll', this.onScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll)
+  }
+
+  getList = async () => {
+    const { ListActions, tag } = this.props
     try {
-      await dispatch(getList({ tag }))
-      // next를 읽지 못하고 있음
-      if (next) dispatch(nextList(next))
+      await ListActions.getList({ tag })
+      const { next } = this.props
+      if (next) ListActions.nextList(next)
     } catch (e) {
       console.log(e)
     }
-  })
+  }
 
-  const getNext = useCallback(async () => {
-    dispatch(showNextList())
-    if (next === prev || !next) return
-    prev = next
+  getNext = async () => {
+    const { ListActions, next } = this.props
+    ListActions.showNextList()
+    if (next === this.prev || !next) return
+    this.prev = next
     try {
-      await dispatch(nextList(next))
+      await ListActions.nextList(next)
     } catch (e) {
       console.log(e)
     }
-  })
+  }
 
-  const onScroll = useCallback(() => {
-    if (!nextPosts.length) return
+  onScroll = () => {
+    const { nextPosts } = this.props
+    if (nextPosts.size === 0) return
 
     const { scrollY } = window
     const { scrollHeight, clientHeight } = document.body
 
-    if (scrollHeight - clientHeight - 200 <= scrollY) getNext()
+    if (scrollHeight - clientHeight - 200 <= scrollY) {
+      this.getNext()
+    }
+  }
+  render() {
+    const { posts, pending } = this.props
+    const postList = posts.map(item => (
+      <Item
+        key={item._id}
+        title={item.title}
+        markdown={item.markdown}
+        createdAt={item.createdAt}
+        thumbnail={item.thumbnail}
+        id={item._id}
+        pending={pending}
+      />
+    ))
+    return <div className="post-list">{postList}</div>
+  }
+}
+
+export default connect(
+  ({ list, pender }) => ({
+    posts: list.posts,
+    next: list.next,
+    nextPosts: list.nextPosts,
+    pending: pender.pending['list/GET_LIST']
+  }),
+  dispatch => ({
+    ListActions: bindActionCreators(listActions, dispatch)
   })
-
-  useEffect(_ => {
-    getPosts()
-    window.addEventListener('scroll', onScroll)
-  }, [])
-
-  useEffect(
-    _ => _ => {
-      window.removeEventListener('scroll', onScroll)
-    },
-    []
-  )
-
-  const postList = posts.map(item => (
-    <Item
-      key={item._id}
-      title={item.title}
-      markdown={item.markdown}
-      createdAt={item.createdAt}
-      thumbnail={item.thumbnail}
-      id={item._id}
-      pending={pending['list/GET_LIST']}
-    />
-  ))
-  return <div className="post-list">{postList}</div>
-}
-
-List.propTypes = {
-  tag: PropTypes.string
-}
-
-export default List
+)(ListContainer)

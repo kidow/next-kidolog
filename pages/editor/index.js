@@ -1,9 +1,15 @@
 import { withRouter } from 'next/router'
 import { EditorTemplate } from 'components/templates'
+import axios from 'axios'
 
-const Editor = ({ router }) => {
-  const { id } = router.query
-  return <EditorTemplate id={id} />
+const Editor = ({ post }) => {
+  return <EditorTemplate post={post} />
+}
+
+Editor.getInitialProps = async ({ query }) => {
+  if (!query.id) return {}
+  const { data } = await axios.get(`${process.env.BASE_URL}/posts/${query.id}`)
+  return { post: data }
 }
 
 export default withRouter(Editor)

@@ -14,9 +14,7 @@ module.exports = async (req, res, next) => {
 
   const result = Joi.validate(req.body, schema)
 
-  if (result.error) {
-    return next(new CustomError('Joi error', 400))
-  }
+  if (result.error) return next(new CustomError('Joi error', 400))
 
   const { id } = req.params
 
@@ -24,9 +22,8 @@ module.exports = async (req, res, next) => {
     const post = await Post.findByIdAndUpdate(id, req.body, {
       new: true
     }).exec()
-    if (!post) {
-      return next(new CustomError('404 Not Found', 404))
-    }
+    if (!post) return next(new CustomError('404 Not Found', 404))
+
     res.json(post)
   } catch (err) {
     next(err)

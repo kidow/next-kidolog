@@ -17,8 +17,9 @@ const Login = _ => {
     try {
       await dispatch(login(password))
       Router.push('/')
-    } catch (e) {
-      console.log(e)
+    } catch (err) {
+      alert(err.response.data.message)
+      console.log(err)
     }
   })
 

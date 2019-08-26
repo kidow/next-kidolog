@@ -2,6 +2,11 @@ const withSass = require('@zeit/next-sass')
 const withCSS = require('@zeit/next-css')
 const path = require('path')
 
+const BASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://kidolog.com'
+    : 'http://localhost:3000'
+
 module.exports = withSass(
   withCSS({
     webpack(config) {
@@ -11,6 +16,9 @@ module.exports = withSass(
       config.resolve.alias['styles'] = path.join(__dirname, 'lib/styles')
       config.resolve.alias['api'] = path.join(__dirname, 'lib/api')
       return config
+    },
+    env: {
+      BASE_URL
     }
   })
 )
