@@ -44,13 +44,12 @@ class ListContainer extends React.Component {
     const { nextPosts } = this.props
     if (nextPosts.size === 0) return
 
-    const { scrollY } = window
+    const { pageYOffset } = window
     const { scrollHeight, clientHeight } = document.body
 
-    if (scrollHeight - clientHeight - 200 <= scrollY) {
-      this.getNext()
-    }
+    if (scrollHeight - clientHeight <= pageYOffset + 10) this.getNext()
   }
+
   render() {
     const { posts, pending } = this.props
     const postList = posts.map(item => (
