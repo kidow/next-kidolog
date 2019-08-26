@@ -12,11 +12,11 @@ app.prepare().then(() => {
   require('./lib/moduleAlias')
   require('@lib/rollbar')
   require('./models')()
-  if (NODE_ENV === 'development') server.use(require('morgan')('dev'))
-  else {
+  if (NODE_ENV === 'production') {
     server.use(require('helmet')())
     server.use(require('hpp')())
   }
+  server.use(require('morgan')('dev'))
   server.use(express.json())
   server.use(express.urlencoded({ extended: false }))
   server.use(require('cookie-parser')(COOKIE_KEY))
