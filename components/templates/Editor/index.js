@@ -34,7 +34,7 @@ const EditorTemplate = ({ post }) => {
   useEffect(_ => {
     dispatch(check())
     dispatch(initialize())
-    if (post._id) dispatch(getPost(post))
+    if (post) dispatch(getPost(post))
   }, [])
 
   const onUploadClick = useCallback(() => {
@@ -76,7 +76,7 @@ const EditorTemplate = ({ post }) => {
     }
     try {
       if (!logged) return alert('로그인이 필요합니다')
-      if (post._id) {
+      if (post) {
         await dispatch(updatePost({ id: post._id, ...payload }))
         return Router.push(`/post/${post._id}`)
       }
@@ -140,7 +140,7 @@ const EditorTemplate = ({ post }) => {
             업로드
           </IconButton>
           <div className="spacer" />
-          <Button onClick={onSubmit}>{post._id ? '수정' : '작성'}하기</Button>
+          <Button onClick={onSubmit}>{post ? '수정' : '작성'}하기</Button>
         </div>
       </div>
       <div className="editor__content">
