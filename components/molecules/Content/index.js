@@ -4,11 +4,9 @@ import { Marked } from 'components/molecules'
 
 import { Link } from 'lib/next-routes'
 import Router from 'next/router'
-import Head from 'next/head'
 
 import moment from 'moment'
 import 'moment/locale/ko'
-import removeMd from 'remove-markdown'
 
 import PropTypes from 'prop-types'
 
@@ -44,12 +42,12 @@ const Content = ({ post }) => {
     : []
   return (
     <div className="content__container">
-      {markdown && (
+      {/* {markdown && (
         <Head>
           <title>{title} | Kidow</title>
           <meta name="description" content={removeMd(markdown).slice(0, 190)} />
         </Head>
-      )}
+      )} */}
       <div className="content__title">{title}</div>
       {logged && (
         <div className="content__buttons">

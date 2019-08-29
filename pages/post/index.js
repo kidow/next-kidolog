@@ -1,16 +1,39 @@
 import { PostTemplate } from 'components/templates'
 import { Logo } from 'components/atoms'
 import { withRouter } from 'next/router'
-
+import Head from 'next/head'
+import removeMd from 'remove-markdown'
 import axios from 'axios'
 import { Content } from 'components/molecules'
 
 const Post = ({ post }) => {
   return (
-    <PostTemplate>
-      <Logo theme="post" />
-      <Content post={post} />
-    </PostTemplate>
+    <>
+      <Head>
+        <title>{post.title} | Kidolog</title>
+        <meta
+          name="description"
+          content={removeMd(post.markdown).slice(0, 190)}
+        />
+        <meta property="og:title" content={post.title} />
+        <meta
+          property="og:description"
+          content={removeMd(post.markdown).slice(0, 190)}
+        />
+        <meta property="og:image" content={post.thumbnail} />
+        <meta property="og:url" content={`/post/${post._id}`} />
+        <meta property="twitter:title" content={post.title} />
+        <meta
+          property="twitter:description"
+          content={removeMd(post.markdown).slice(0, 190)}
+        />
+        <meta property="twitter:image" content={post.thumbnail} />
+      </Head>
+      <PostTemplate>
+        <Logo theme="post" />
+        <Content post={post} />
+      </PostTemplate>
+    </>
   )
 }
 

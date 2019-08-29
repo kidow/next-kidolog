@@ -1,6 +1,5 @@
 import React from 'react'
-import App, { Container } from 'next/app'
-import Head from 'next/head'
+import App from 'next/app'
 import 'styles/index.scss'
 
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -34,14 +33,9 @@ class CustomApp extends App {
   render() {
     const { Component, pageProps, store } = this.props
     return (
-      <Container>
-        <Head>
-          <title>Kidow Blog</title>
-        </Head>
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
-      </Container>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     )
   }
 }
