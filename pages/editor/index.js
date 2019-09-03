@@ -1,8 +1,16 @@
 import { withRouter } from 'next/router'
 import { EditorTemplate } from 'components/templates'
+import Head from 'next/head'
 import axios from 'axios'
 
-const Editor = ({ post }) => <EditorTemplate post={post} />
+const Editor = ({ post }) => (
+  <>
+    <Head>
+      <title>에디터 | Kidolog</title>
+    </Head>
+    <EditorTemplate post={post} />
+  </>
+)
 
 Editor.getInitialProps = async ({ query }) => {
   if (!query.id) return {}

@@ -1,0 +1,25 @@
+@import '~styles/color';
+
+.comments__container {
+  padding-bottom: 15rem;
+  .comment__button {
+    width: 55px;
+    float: right;
+    background: white;
+  }
+  .comment__list {
+    .comment__item {
+      .comment__head {
+        span {
+          img {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+          }
+        }
+      }
+      .comment__body {
+      }
+    }
+  }
+}

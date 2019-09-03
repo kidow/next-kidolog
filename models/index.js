@@ -14,6 +14,6 @@ module.exports = _ => {
   )
 
   require('./post')
-  require('./account')
+  require('./user')
   require('./comment')
 }

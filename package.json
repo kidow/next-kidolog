@@ -4,7 +4,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server",
+    "dev": "nodemon app --watch server",
     "build": "next build",
     "start": "NODE_ENV=production node server"
   },
@@ -52,7 +52,8 @@
     "redux-pender": "^2.0.9",
     "redux-saga": "^1.0.0",
     "remove-markdown": "^0.3.0",
-    "rollbar": "^2.5.2"
+    "rollbar": "^2.5.2",
+    "uuid4": "^1.1.4"
   },
   "devDependencies": {
     "@types/next": "^7.0.6",

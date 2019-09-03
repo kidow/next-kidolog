@@ -42,12 +42,6 @@ const Content = ({ post }) => {
     : []
   return (
     <div className="content__container">
-      {/* {markdown && (
-        <Head>
-          <title>{title} | Kidow</title>
-          <meta name="description" content={removeMd(markdown).slice(0, 190)} />
-        </Head>
-      )} */}
       <div className="content__title">{title}</div>
       {logged && (
         <div className="content__buttons">

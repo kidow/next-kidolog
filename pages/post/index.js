@@ -5,6 +5,7 @@ import Head from 'next/head'
 import removeMd from 'remove-markdown'
 import axios from 'axios'
 import { Content } from 'components/molecules'
+import { Comments } from 'components/organisms'
 
 const Post = ({ post }) => {
   return (
@@ -32,6 +33,7 @@ const Post = ({ post }) => {
       <PostTemplate>
         <Logo theme="post" />
         <Content post={post} />
+        {/* <Comments /> */}
       </PostTemplate>
     </>
   )

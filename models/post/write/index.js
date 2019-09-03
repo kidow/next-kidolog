@@ -1,4 +1,4 @@
-module.exports = function({ title, markdown, tags, thumbnail }) {
-  const post = new this({ title, markdown, tags, thumbnail })
+module.exports = function(reqBody) {
+  const post = new this(reqBody)
   return post.save()
 }

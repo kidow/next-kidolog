@@ -54,9 +54,8 @@ class Markdown extends Component {
   }
 
   onChange = e => {
-    const { name, value } = e.target
     const { EditorActions } = this.props
-    EditorActions.changeInput({ name, value })
+    EditorActions.changeInput(e.target)
   }
 
   onChangeMarkdown = doc => {
